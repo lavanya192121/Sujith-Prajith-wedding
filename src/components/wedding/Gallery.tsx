@@ -101,14 +101,14 @@ export function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={photos[open].src}
-              alt={photos[open].alt}
+              src={photos[open]!.src}
+              alt={photos[open]!.alt}
               width={1024}
               height={1024}
               className="max-h-[75vh] w-full rounded-2xl border border-gold/40 object-contain"
             />
             <figcaption className="mt-4 text-center text-sm tracking-wide text-background/80">
-              {photos[open].alt}
+              {photos[open]!.alt}
             </figcaption>
           </figure>
         </div>
