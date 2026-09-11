@@ -38,25 +38,28 @@ export function Gallery() {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-        {photos.map((photo, i) => (
-          <button
-            key={photo.src}
-            type="button"
-            onClick={() => setOpen(i)}
-            className="group glass-card overflow-hidden rounded-2xl p-1.5 transition-transform duration-300 hover:-translate-y-1"
-            aria-label={`Open image: ${photo.alt}`}
-          >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="aspect-square w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </button>
-        ))}
+      <div className="relative -mx-5 overflow-hidden sm:-mx-6">
+        <div className="group flex w-max animate-gallery-scroll hover:[animation-play-state:paused]">
+          {[...photos, ...photos].map((photo, i) => (
+            <button
+              key={`${photo.src}-${i}`}
+              type="button"
+              onClick={() => setOpen(i % photos.length)}
+              className="group/item relative mx-2 h-64 w-56 shrink-0 overflow-hidden rounded-2xl border border-gold/30 sm:mx-3 sm:h-80 sm:w-72"
+              aria-label={`Open image: ${photo.alt}`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover/item:scale-110"
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-sage-deep/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/item:opacity-100" />
+            </button>
+          ))}
+        </div>
       </div>
 
       {open !== null && (
