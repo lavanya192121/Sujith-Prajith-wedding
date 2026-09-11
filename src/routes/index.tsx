@@ -103,7 +103,7 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
 
       {!opened && (
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="absolute top-[9vh] text-[0.6rem] tracking-[0.5em] text-sage-deep/70 uppercase sm:text-xs">
+          <p className="absolute top-[6vh] text-[0.6rem] tracking-[0.5em] text-sage-deep uppercase [text-shadow:0_1px_10px_var(--background)] sm:text-xs">
             Together with our families
           </p>
 
