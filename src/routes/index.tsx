@@ -9,6 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 
+import coverArt from "@/assets/cover-divine-hands.jpg";
 import heroHands from "@/assets/hero-hands.jpg";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
