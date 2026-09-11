@@ -27,7 +27,7 @@ export function PeacockFeather({ className = "" }: { className?: string }) {
           return (
             <path
               key={i}
-              d={`M30 52 L${30 + Math.sin(a) * 26} ${52 - Math.cos(a) * 30}`}
+              d={`M30 52 L${Number((30 + Math.sin(a) * 26).toFixed(2))} ${Number((52 - Math.cos(a) * 30).toFixed(2))}`}
               opacity="0.55"
             />
           );
@@ -47,6 +47,8 @@ export function Divider({ className = "" }: { className?: string }) {
   );
 }
 
+const r2 = (n: number) => Number(n.toFixed(2));
+
 export function MandalaRing({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden="true" fill="none">
@@ -58,7 +60,7 @@ export function MandalaRing({ className = "" }: { className?: string }) {
           return (
             <path
               key={i}
-              d={`M${100 + Math.cos(a) * 66} ${100 + Math.sin(a) * 66} l${Math.cos(a) * 12} ${Math.sin(a) * 12}`}
+              d={`M${r2(100 + Math.cos(a) * 66)} ${r2(100 + Math.sin(a) * 66)} l${r2(Math.cos(a) * 12)} ${r2(Math.sin(a) * 12)}`}
             />
           );
         })}
@@ -67,11 +69,11 @@ export function MandalaRing({ className = "" }: { className?: string }) {
           return (
             <ellipse
               key={i}
-              cx={100 + Math.cos(a) * 52}
-              cy={100 + Math.sin(a) * 52}
+              cx={r2(100 + Math.cos(a) * 52)}
+              cy={r2(100 + Math.sin(a) * 52)}
               rx="10"
               ry="4"
-              transform={`rotate(${i * 30} ${100 + Math.cos(a) * 52} ${100 + Math.sin(a) * 52})`}
+              transform={`rotate(${i * 30} ${r2(100 + Math.cos(a) * 52)} ${r2(100 + Math.sin(a) * 52)})`}
             />
           );
         })}
