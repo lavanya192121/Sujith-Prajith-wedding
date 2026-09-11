@@ -123,7 +123,7 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
             </button>
           </div>
 
-          <p className="animate-soft-pulse absolute bottom-[9vh] text-[0.6rem] tracking-[0.42em] text-gold uppercase sm:text-xs">
+          <p className="animate-soft-pulse absolute bottom-[5vh] text-[0.6rem] tracking-[0.42em] text-sage-deep uppercase [text-shadow:0_1px_12px_var(--background)] sm:text-xs">
             Tap the initials to open
           </p>
         </div>
