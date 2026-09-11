@@ -103,28 +103,39 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
 
       {!opened && (
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="absolute top-[6vh] text-[0.6rem] tracking-[0.5em] text-sage-deep uppercase [text-shadow:0_1px_10px_var(--background)] sm:text-xs">
+          <p className="absolute top-[5.5vh] font-display text-[0.72rem] font-medium tracking-[0.55em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
             Together with our families
           </p>
 
           <div className="relative flex items-center justify-center">
-            <MandalaRing className="animate-slow-spin pointer-events-none absolute h-[16rem] w-[16rem] text-gold/25 sm:h-[22rem] sm:w-[22rem]" />
+            {PETALS.map((p) => (
+              <span
+                key={p.id}
+                className="petal animate-petal"
+                style={{
+                  left: p.left,
+                  animationDelay: p.delay,
+                  animationDuration: p.duration,
+                  ["--petal-sway" as string]: p.sway,
+                }}
+              />
+            ))}
             <button
               type="button"
               onClick={onOpen}
               className="animate-float-glow pointer-events-auto cursor-pointer bg-transparent px-6 py-4 focus-visible:outline-none"
               aria-label="Open the invitation for Sujith and Prajith"
             >
-              <span className="font-display text-shimmer flex items-center gap-4 text-7xl leading-none font-light text-sage-deep sm:text-8xl">
+              <span className="font-script text-rich-gold flex items-center gap-3 text-8xl leading-none sm:gap-5 sm:text-[10rem]">
                 S
-                <LotusMark className="h-9 w-14 text-lotus/90 sm:h-12 sm:w-16" />
+                <LotusMark className="h-10 w-16 text-lotus sm:h-14 sm:w-24" />
                 P
               </span>
             </button>
           </div>
 
-          <p className="animate-soft-pulse absolute bottom-[5vh] text-[0.6rem] tracking-[0.42em] text-sage-deep uppercase [text-shadow:0_1px_12px_var(--background)] sm:text-xs">
-            Tap the initials to open
+          <p className="animate-soft-pulse absolute bottom-[4.5vh] font-display text-[0.7rem] font-medium tracking-[0.45em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
+            Tap to open invitation
           </p>
         </div>
       )}
@@ -132,15 +143,30 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
   );
 }
 
+const PETALS = [
+  { id: 1, left: "38%", delay: "0s", duration: "7s", sway: "2.5rem" },
+  { id: 2, left: "52%", delay: "2.2s", duration: "8.5s", sway: "-2rem" },
+  { id: 3, left: "62%", delay: "4.4s", duration: "7.6s", sway: "3rem" },
+  { id: 4, left: "45%", delay: "5.8s", duration: "9s", sway: "-2.6rem" },
+];
+
 function CoverArt() {
   return (
     <div className="relative h-full w-full">
       <img
         src={coverArt}
+        alt=""
+        aria-hidden
+        width={603}
+        height={1150}
+        className="absolute inset-0 h-full w-full scale-110 object-cover object-center opacity-90 blur-2xl"
+      />
+      <img
+        src={coverArt}
         alt="Radha's hennaed hand reaching down towards Krishna's blue hand holding a lotus and peacock feather"
         width={603}
         height={1150}
-        className="h-full w-full object-contain object-center"
+        className="relative h-full w-full object-contain object-center"
       />
     </div>
   );

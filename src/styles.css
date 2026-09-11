@@ -290,6 +290,56 @@ body {
   animation: shimmer-sweep 7s ease-in-out infinite;
 }
 
+@utility text-rich-gold {
+  background: linear-gradient(
+    105deg,
+    oklch(0.58 0.09 80),
+    oklch(0.82 0.11 90) 35%,
+    oklch(0.62 0.08 75) 65%,
+    oklch(0.86 0.1 95)
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 14px color-mix(in oklab, var(--gold) 55%, transparent))
+    drop-shadow(0 2px 6px color-mix(in oklab, var(--gold) 30%, transparent));
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -10%, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(var(--petal-sway, 2rem), 32rem, 0) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+@utility petal {
+  position: absolute;
+  top: -1rem;
+  width: 0.8rem;
+  height: 1.1rem;
+  border-radius: 100% 0 100% 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    color-mix(in oklab, var(--lotus) 85%, white),
+    color-mix(in oklab, var(--lotus) 70%, var(--gold))
+  );
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--gold) 40%, transparent));
+}
+
+@utility animate-petal {
+  animation: petal-fall 7s linear infinite;
+}
+
 @keyframes shimmer-sweep {
   0%,
   100% {
