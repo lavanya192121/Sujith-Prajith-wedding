@@ -9,6 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 
+import coverArt from "@/assets/cover-divine-hands.jpg";
 import heroHands from "@/assets/hero-hands.jpg";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
@@ -82,43 +83,65 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
   if (dismissed) return null;
 
   return (
-    <div className="fixed inset-0 z-40 flex">
-      <div
-        className={`relative h-full w-1/2 overflow-hidden bg-secondary ${opened ? "animate-veil-left" : ""}`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-muted" />
-        <PeacockFeather className="absolute top-1/4 -left-6 h-64 text-sage-deep/25 sm:h-96" />
-      </div>
-      <div
-        className={`relative h-full w-1/2 overflow-hidden bg-secondary ${opened ? "animate-veil-right" : ""}`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-bl from-secondary via-background to-muted" />
-        <PeacockFeather className="absolute bottom-1/4 -right-6 h-64 scale-x-[-1] text-sage-deep/25 sm:h-96" />
+    <div className="fixed inset-0 z-40 bg-background">
+      <div className="flex h-full w-full">
+        <div
+          className={`relative h-full w-1/2 overflow-hidden bg-background ${opened ? "animate-veil-left" : ""}`}
+        >
+          <div className="absolute inset-y-0 left-0 h-full w-[200%]">
+            <CoverArt />
+          </div>
+        </div>
+        <div
+          className={`relative h-full w-1/2 overflow-hidden bg-background ${opened ? "animate-veil-right" : ""}`}
+        >
+          <div className="absolute inset-y-0 right-0 h-full w-[200%]">
+            <CoverArt />
+          </div>
+        </div>
       </div>
 
       {!opened && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <MandalaRing className="animate-slow-spin absolute h-[22rem] w-[22rem] text-gold/30 sm:h-[34rem] sm:w-[34rem]" />
-          <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
+        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <p className="absolute top-[6vh] text-[0.6rem] tracking-[0.5em] text-sage-deep uppercase [text-shadow:0_1px_10px_var(--background)] sm:text-xs">
             Together with our families
           </p>
-          <button
-            type="button"
-            onClick={onOpen}
-            className="animate-soft-pulse glass-card mt-8 rounded-full px-8 py-6 sm:px-12 sm:py-9"
-            aria-label="Open the invitation for Sujith and Prajith"
-          >
-            <span className="font-display flex items-baseline gap-3 text-6xl font-light text-sage-deep sm:text-8xl">
-              S
-              <LotusMark className="h-8 w-12 text-lotus sm:h-12 sm:w-16" />
-              P
-            </span>
-          </button>
-          <p className="mt-10 text-[0.6rem] tracking-[0.42em] text-gold uppercase sm:text-xs">
+
+          <div className="relative flex items-center justify-center">
+            <MandalaRing className="animate-slow-spin pointer-events-none absolute h-[16rem] w-[16rem] text-gold/25 sm:h-[22rem] sm:w-[22rem]" />
+            <button
+              type="button"
+              onClick={onOpen}
+              className="animate-float-glow pointer-events-auto cursor-pointer bg-transparent px-6 py-4 focus-visible:outline-none"
+              aria-label="Open the invitation for Sujith and Prajith"
+            >
+              <span className="font-display text-shimmer flex items-center gap-4 text-7xl leading-none font-light text-sage-deep sm:text-8xl">
+                S
+                <LotusMark className="h-9 w-14 text-lotus/90 sm:h-12 sm:w-16" />
+                P
+              </span>
+            </button>
+          </div>
+
+          <p className="animate-soft-pulse absolute bottom-[5vh] text-[0.6rem] tracking-[0.42em] text-sage-deep uppercase [text-shadow:0_1px_12px_var(--background)] sm:text-xs">
             Tap the initials to open
           </p>
         </div>
       )}
+    </div>
+  );
+}
+
+function CoverArt() {
+  return (
+    <div className="relative h-full w-full">
+      <img
+        src={coverArt}
+        alt="Radha's hennaed hand reaching down towards Krishna's blue hand holding a lotus and peacock feather"
+        width={603}
+        height={1150}
+        className="h-full w-full object-contain object-center"
+      />
     </div>
   );
 }
