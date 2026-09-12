@@ -9,6 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 
+import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import coverArt from "@/assets/cover-divine-hands.jpg";
 import heroHands from "@/assets/hero-hands.jpg";
 import { Countdown } from "@/components/wedding/Countdown";
@@ -385,25 +386,94 @@ function Rsvp() {
 
 function ThankYou() {
   return (
-    <footer className="relative overflow-hidden px-5 py-24 text-center sm:py-32">
+    <footer className="relative overflow-hidden px-5 py-24 sm:py-32">
       <MandalaRing className="animate-slow-spin pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 text-gold/20" />
-      <div className="relative mx-auto max-w-xl">
-        <LotusMark className="mx-auto h-10 w-16 text-lotus" />
-        <h2 className="font-script mt-6 text-5xl text-gradient-gold sm:text-6xl">
-          Thank you
-        </h2>
-        <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-          For the love, the prayers and the blessings that have brought us here. We
-          look forward to beginning this journey surrounded by you.
-        </p>
-        <Divider className="mt-10" />
-        <p className="font-display mt-8 text-2xl font-light text-sage-deep">
-          Sujith <span className="font-script text-gold">&amp;</span> Prajith
-        </p>
-        <p className="mt-3 text-[0.6rem] tracking-[0.45em] text-muted-foreground uppercase">
-          18 January 2027 · Kottayam
-        </p>
+
+      <div className="relative mx-auto max-w-3xl">
+        <div className="glass-card rounded-[2rem] p-8 sm:p-12">
+          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
+            {/* Stamp-style couple sketch */}
+            <div className="relative shrink-0">
+              <div className="relative rotate-[-2deg] rounded-2xl border-2 border-gold/60 bg-background/40 p-2 shadow-lg shadow-gold/10">
+                <CornerOrnament position="tl" />
+                <CornerOrnament position="tr" />
+                <CornerOrnament position="bl" />
+                <CornerOrnament position="br" />
+                <img
+                  src={coupleSketch.url}
+                  alt="Sketch of Sujith and Prajith"
+                  width={220}
+                  height={280}
+                  className="h-44 w-36 rounded-xl object-cover grayscale-[20%] sepia-[15%] sm:h-56 sm:w-44"
+                />
+              </div>
+              <p className="font-display mt-3 text-center text-[0.65rem] tracking-[0.35em] text-gold uppercase sm:text-xs">
+                With love
+              </p>
+            </div>
+
+            {/* Thank-you message */}
+            <div className="text-center md:text-left">
+              <LotusMark className="mx-auto h-7 w-11 text-lotus md:mx-0" />
+              <h2 className="font-script mt-4 text-4xl text-gradient-gold sm:text-5xl">
+                Thank you
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                For the love, the prayers and the blessings that have brought us
+                here. We look forward to beginning this journey surrounded by you.
+              </p>
+              <Divider className="mt-8 md:justify-start" />
+              <p className="font-display mt-6 text-2xl font-light text-sage-deep">
+                Sujith <span className="font-script text-gold">&amp;</span> Prajith
+              </p>
+              <p className="mt-2 text-[0.6rem] tracking-[0.45em] text-muted-foreground uppercase">
+                18 January 2027 · Kottayam
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
+  );
+}
+
+function CornerOrnament({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
+  const base =
+    "absolute h-5 w-5 text-gold/80 sm:h-6 sm:w-6";
+  const place = {
+    tl: "-top-2.5 -left-2.5",
+    tr: "-top-2.5 -right-2.5",
+    bl: "-bottom-2.5 -left-2.5",
+    br: "-bottom-2.5 -right-2.5",
+  }[position];
+  const rotate = {
+    tl: "",
+    tr: "rotate-90",
+    bl: "-rotate-90",
+    br: "rotate-180",
+  }[position];
+  return (
+    <svg
+      viewBox="0 0 40 40"
+      className={`${base} ${place} ${rotate}`}
+      aria-hidden="true"
+      fill="none"
+    >
+      <path
+        d="M4 36 Q4 4 36 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10 36 Q10 10 36 10"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+        opacity="0.6"
+      />
+      <circle cx="36" cy="4" r="2" fill="currentColor" />
+      <circle cx="10" cy="36" r="1.5" fill="currentColor" opacity="0.7" />
+    </svg>
   );
 }
