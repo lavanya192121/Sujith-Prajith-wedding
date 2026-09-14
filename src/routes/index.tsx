@@ -260,42 +260,130 @@ const events = [
 
 function Events() {
   return (
-    <section className="relative px-5 py-20 sm:py-28">
-      <MandalaRing className="animate-slow-spin pointer-events-none absolute -top-16 -right-24 h-72 w-72 text-gold/15" />
-      <div className="mx-auto max-w-4xl">
+    <section className="relative overflow-hidden px-5 py-20 sm:py-28">
+      <MandalaRing className="animate-slow-spin pointer-events-none absolute -top-16 -right-24 h-72 w-72 text-gold/10" />
+      <PeacockFeather className="animate-drift pointer-events-none absolute -bottom-16 -left-5 h-64 text-sage-deep/10" />
+      <div className="mx-auto max-w-5xl">
         <SectionHeading eyebrow="Ceremonies" title="Event details" />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {events.map((event) => (
-            <article key={event.name} className="glass-card rounded-3xl p-7 sm:p-9">
-              <LotusMark className="h-7 w-12 text-lotus" />
-              <h3 className="font-display mt-4 text-3xl font-light text-sage-deep">
-                {event.name}
-              </h3>
-              <dl className="mt-6 space-y-4 text-sm">
-                <div className="flex min-w-0 items-start gap-3">
-                  <CalendarHeart className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <dd className="min-w-0">{event.date}</dd>
+        <div className="relative mt-14 space-y-9 sm:mt-16 md:space-y-12">
+          <div className="ceremony-line absolute inset-y-5 left-5 w-px md:left-1/2 md:-translate-x-1/2" />
+          {events.map((event, index) => (
+            <div
+              key={event.name}
+              className={`relative grid grid-cols-[2.5rem_minmax(0,1fr)] items-center gap-4 md:grid-cols-[minmax(0,1fr)_4rem_minmax(0,1fr)] md:gap-6 ${index % 2 === 1 ? "md:[&>article]:col-start-3" : ""}`}
+            >
+              <div
+                className={`relative z-10 col-start-1 row-start-1 grid h-10 w-10 place-items-center rounded-full border border-gold/70 bg-background shadow-[0_0_0_5px_var(--background),0_0_24px_color-mix(in_oklab,var(--gold)_28%,transparent)] md:col-start-2 ${index % 2 === 1 ? "md:row-start-1" : ""}`}
+                aria-hidden="true"
+              >
+                {index === 0 ? (
+                  <LotusMark className="h-5 w-7 text-gold" />
+                ) : (
+                  <PeacockFeather className="h-7 w-4 text-gold" />
+                )}
+              </div>
+
+              <article
+                className={`ceremony-card group relative col-start-2 row-start-1 overflow-hidden rounded-2xl p-6 sm:p-8 md:col-span-1 ${index % 2 === 0 ? "md:col-start-1 md:text-right" : "md:col-start-3"}`}
+              >
+                <EventCorner position="tl" />
+                <EventCorner position="tr" />
+                <EventCorner position="bl" />
+                <EventCorner position="br" />
+                <div className={`relative z-10 ${index % 2 === 0 ? "md:ml-auto" : ""}`}>
+                  <div className={`flex items-center gap-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-gold/35 bg-gold/10 shadow-inner">
+                      {index === 0 ? (
+                        <LotusMark className="h-5 w-8 text-lotus" />
+                      ) : (
+                        <PeacockFeather className="h-8 w-4 text-sage-deep" />
+                      )}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-event text-[0.58rem] font-medium tracking-[0.32em] text-gold uppercase">
+                        {index === 0 ? "Sacred vows" : "Evening celebration"}
+                      </p>
+                      <h3 className="font-display mt-1 text-3xl font-medium text-sage-deep sm:text-4xl">
+                        {event.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className={`metallic-separator mt-5 h-px w-full ${index % 2 === 0 ? "md:ml-auto" : ""}`} />
+
+                  <dl className="font-event mt-6 space-y-4 text-sm text-foreground">
+                    <EventDetail icon={CalendarHeart} alignRight={index % 2 === 0}>
+                      {event.date}
+                    </EventDetail>
+                    <EventDetail icon={Clock} alignRight={index % 2 === 0}>
+                      {event.time}
+                    </EventDetail>
+                    <EventDetail icon={MapPin} alignRight={index % 2 === 0}>
+                      <span className="block font-medium text-sage-deep">{event.venue}</span>
+                      <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                        {event.address}
+                      </span>
+                    </EventDetail>
+                  </dl>
+
+                  <div className={`mt-7 flex ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+                    <p className="font-event inline-flex max-w-full items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-4 py-2 text-[0.62rem] font-medium tracking-[0.14em] text-sage-deep uppercase shadow-inner">
+                      <LotusMark className="h-3 w-5 shrink-0 text-gold" />
+                      <span>{event.note}</span>
+                    </p>
+                  </div>
                 </div>
-                <div className="flex min-w-0 items-start gap-3">
-                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <dd className="min-w-0">{event.time}</dd>
-                </div>
-                <div className="flex min-w-0 items-start gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <dd className="min-w-0">
-                    <span className="block font-medium">{event.venue}</span>
-                    <span className="block text-muted-foreground">{event.address}</span>
-                  </dd>
-                </div>
-              </dl>
-              <p className="mt-6 border-t border-gold/25 pt-4 text-xs tracking-[0.2em] text-muted-foreground uppercase">
-                {event.note}
-              </p>
-            </article>
+              </article>
+            </div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function EventDetail({
+  icon: Icon,
+  alignRight,
+  children,
+}: {
+  icon: typeof Clock;
+  alignRight: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={`flex min-w-0 items-start gap-3 ${alignRight ? "md:flex-row-reverse" : ""}`}
+    >
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold/30 bg-background/45 shadow-inner">
+        <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} />
+      </span>
+      <dd className={`min-w-0 pt-1 ${alignRight ? "md:text-right" : ""}`}>{children}</dd>
+    </div>
+  );
+}
+
+function EventCorner({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
+  const placement = {
+    tl: "top-3 left-3",
+    tr: "top-3 right-3 rotate-90",
+    bl: "bottom-3 left-3 -rotate-90",
+    br: "right-3 bottom-3 rotate-180",
+  }[position];
+
+  return (
+    <svg
+      viewBox="0 0 54 54"
+      className={`pointer-events-none absolute h-10 w-10 text-gold/45 transition-colors duration-500 group-hover:text-gold/70 ${placement}`}
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M4 49V18Q4 4 18 4H49" stroke="currentColor" strokeWidth="1" />
+      <path d="M10 40V21Q10 10 21 10H40" stroke="currentColor" strokeWidth="0.7" />
+      <path d="M4 27C13 26 18 20 19 11C20 20 26 26 35 27" stroke="currentColor" strokeWidth="0.7" />
+      <circle cx="4" cy="49" r="1.8" fill="currentColor" />
+      <circle cx="49" cy="4" r="1.8" fill="currentColor" />
+    </svg>
   );
 }
 
