@@ -431,19 +431,6 @@ body {
   }
 }
 
-@keyframes gallery-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@utility animate-gallery-scroll {
-  animation: gallery-scroll 35s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
