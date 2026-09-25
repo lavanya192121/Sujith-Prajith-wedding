@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import lotus from "@/assets/gallery-lotus.jpg";
 import peacock from "@/assets/gallery-peacock.jpg";
@@ -7,101 +7,58 @@ import lamp from "@/assets/gallery-lamp.jpg";
 import mandala from "@/assets/gallery-mandala.jpg";
 import temple from "@/assets/gallery-temple.jpg";
 import mandap from "@/assets/gallery-mandap.jpg";
+import { Button } from "@/components/ui/button";
 
 const photos = [
-  {
-    src: lotus,
-    alt: "Pink lotus in bloom, the emblem of the celebration",
-    caption: "The sacred lotus",
-    frame: "w-64 p-2 sm:w-72",
-    offset: "md:translate-y-4",
-  },
-  {
-    src: peacock,
-    alt: "Peacock feather illustration in sage and gold",
-    caption: "Ethereal plumage",
-    frame: "w-64 p-2 sm:w-80",
-    offset: "md:-translate-y-8",
-  },
-  {
-    src: lamp,
-    alt: "Traditional brass nilavilakku lamp with jasmine",
-    caption: "Eternal flame",
-    frame: "w-56 p-2 sm:w-60",
-    offset: "md:translate-y-12",
-  },
-  {
-    src: mandala,
-    alt: "Sage and gold mandala rangoli pattern",
-    caption: "Infinite geometry",
-    frame: "w-64 p-2 sm:w-72",
-    offset: "md:-translate-y-4",
-  },
-  {
-    src: temple,
-    alt: "Kerala temple silhouette against a dusk sky",
-    caption: "Sanctuary of love",
-    frame: "w-72 p-3 sm:w-80",
-    offset: "md:translate-y-8",
-  },
-  {
-    src: mandap,
-    alt: "Floral mandap draped in sage silk and lotuses",
-    caption: "The union canopy",
-    frame: "w-64 p-2 sm:w-72",
-    offset: "md:-translate-y-12",
-  },
+  { src: lotus, alt: "Pink lotus in bloom, the emblem of the celebration", caption: "The sacred lotus" },
+  { src: peacock, alt: "Peacock feather illustration in sage and gold", caption: "Ethereal plumage" },
+  { src: lamp, alt: "Traditional brass nilavilakku lamp with jasmine", caption: "Eternal flame" },
+  { src: mandala, alt: "Sage and gold mandala rangoli pattern", caption: "Infinite geometry" },
+  { src: temple, alt: "Kerala temple silhouette against a dusk sky", caption: "Sanctuary of love" },
+  { src: mandap, alt: "Floral mandap draped in sage silk and lotuses", caption: "The union canopy" },
 ];
 
-function Reveal({
-  index,
-  children,
-}: {
-  index: number;
-  children: React.ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+const positionClasses = {
+  center: "gallery-slide-center",
+  left: "gallery-slide-left",
+  right: "gallery-slide-right",
+  hiddenLeft: "gallery-slide-hidden-left",
+  hiddenRight: "gallery-slide-hidden-right",
+};
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${(index % 3) * 140}ms` }}
-      className={`transition-all duration-1000 ease-out ${
-        shown ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-      }`}
-    >
-      {children}
-    </div>
-  );
+function getPosition(index: number, active: number) {
+  const forward = (index - active + photos.length) % photos.length;
+  const backward = (active - index + photos.length) % photos.length;
+  if (forward === 0) return "center";
+  if (forward === 1) return "right";
+  if (backward === 1) return "left";
+  return forward < backward ? "hiddenRight" : "hiddenLeft";
 }
 
 export function Gallery() {
+  const [active, setActive] = useState(0);
   const [open, setOpen] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
+
+  const previous = () => setActive((current) => (current - 1 + photos.length) % photos.length);
+  const next = () => setActive((current) => (current + 1) % photos.length);
+
+  useEffect(() => {
+    if (paused || open !== null) return;
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % photos.length);
+    }, 3800);
+    return () => window.clearInterval(timer);
+  }, [paused, open]);
 
   useEffect(() => {
     if (open === null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(null);
-      if (e.key === "ArrowRight") setOpen((i) => ((i ?? 0) + 1) % photos.length);
-      if (e.key === "ArrowLeft")
-        setOpen((i) => ((i ?? 0) - 1 + photos.length) % photos.length);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(null);
+      if (event.key === "ArrowRight") setOpen((index) => ((index ?? 0) + 1) % photos.length);
+      if (event.key === "ArrowLeft") {
+        setOpen((index) => ((index ?? 0) - 1 + photos.length) % photos.length);
+      }
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -111,94 +68,149 @@ export function Gallery() {
     };
   }, [open]);
 
+  const openPhoto = open === null ? undefined : photos[open];
+
   return (
     <>
-      <div className="mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-y-14 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
-        {photos.map((photo, i) => (
-          <Reveal key={photo.src} index={i}>
-            <div
-              className={`group relative flex flex-col items-center transition-transform duration-700 ${photo.offset}`}
-            >
+      <div
+        className="gallery-carousel mx-auto max-w-6xl"
+        aria-roledescription="carousel"
+        aria-label="Wedding gallery"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+        }}
+      >
+        <div className="gallery-stage relative mx-auto" aria-live="polite">
+          {photos.map((photo, index) => {
+            const position = getPosition(index, active);
+            const isCenter = position === "center";
+            return (
               <button
+                key={photo.src}
                 type="button"
-                onClick={() => setOpen(i)}
-                className={`relative overflow-hidden border border-gold/40 bg-card shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--sage-deep)_45%,transparent)] transition-all duration-700 ease-out hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_30px_60px_-24px_color-mix(in_oklab,var(--sage-deep)_55%,transparent),0_0_24px_color-mix(in_oklab,var(--gold)_28%,transparent)] ${photo.frame}`}
-                aria-label={`Open image: ${photo.alt}`}
+                onClick={() => (isCenter ? setOpen(index) : setActive(index))}
+                className={`gallery-slide group absolute ${positionClasses[position]}`}
+                aria-label={isCenter ? `Open image: ${photo.alt}` : `Show image: ${photo.alt}`}
+                aria-current={isCenter ? "true" : undefined}
+                tabIndex={isCenter ? 0 : -1}
               >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="aspect-square w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-                />
-                {/* inner hairline frame */}
-                <span className="pointer-events-none absolute inset-2 border border-gold/25 transition-colors duration-700 group-hover:border-gold/60" />
-                {/* soft sage wash that lifts on hover */}
-                <span className="pointer-events-none absolute inset-0 bg-sage-deep/10 transition-colors duration-700 group-hover:bg-transparent" />
-                {/* gold corner accents */}
-                <span className="pointer-events-none absolute top-4 left-4 h-5 w-5 border-t border-l border-gold opacity-0 transition-all duration-500 group-hover:opacity-80" />
-                <span className="pointer-events-none absolute right-4 bottom-4 h-5 w-5 border-r border-b border-gold opacity-0 transition-all duration-500 group-hover:opacity-80" />
+                <span className="gallery-frame block h-full w-full overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    width={1024}
+                    height={1024}
+                    className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  />
+                  <span className="pointer-events-none absolute inset-2 border border-gold/35" />
+                  <span className="pointer-events-none absolute inset-0 bg-sage-deep/10 transition-colors duration-700 group-hover:bg-transparent" />
+                  <span className="gallery-sheen pointer-events-none absolute inset-0" />
+                </span>
+                <span className="gallery-caption absolute right-3 bottom-3 left-3 border-t border-gold/40 bg-sage-deep/75 px-3 py-3 text-center backdrop-blur-md">
+                  <span className="font-event block text-[0.58rem] font-medium tracking-[0.28em] text-background uppercase">
+                    {photo.caption}
+                  </span>
+                </span>
               </button>
-              <span className="font-event mt-4 text-[0.62rem] font-medium tracking-[0.3em] text-sage-deep/70 uppercase transition-colors duration-500 group-hover:text-gold">
-                {photo.caption}
-              </span>
-            </div>
-          </Reveal>
-        ))}
+            );
+          })}
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-4 sm:mt-8">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            onClick={previous}
+            className="rounded-full border-gold/45 bg-background/55 text-sage-deep backdrop-blur-md hover:bg-gold/15"
+            aria-label="Previous gallery image"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <div className="flex items-center gap-2" aria-label={`Image ${active + 1} of ${photos.length}`}>
+            {photos.map((photo, index) => (
+              <button
+                key={photo.caption}
+                type="button"
+                onClick={() => setActive(index)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  active === index ? "w-8 bg-gold" : "w-1.5 bg-sage-deep/25 hover:bg-gold/55"
+                }`}
+                aria-label={`Show ${photo.caption}`}
+                aria-current={active === index ? "true" : undefined}
+              />
+            ))}
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            onClick={next}
+            className="rounded-full border-gold/45 bg-background/55 text-sage-deep backdrop-blur-md hover:bg-gold/15"
+            aria-label="Next gallery image"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
 
-      {open !== null && (
+      {openPhoto && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-sage-deep/85 p-4 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
           onClick={() => setOpen(null)}
         >
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="icon"
             onClick={() => setOpen(null)}
-            className="absolute top-5 right-5 rounded-full border border-gold/50 bg-background/20 p-2 text-background transition-colors hover:bg-background/35"
+            className="absolute top-5 right-5 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background"
             aria-label="Close preview"
           >
             <X className="h-5 w-5" />
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setOpen((i) => ((i ?? 0) - 1 + photos.length) % photos.length);
+            variant="outline"
+            size="icon"
+            onClick={(event) => {
+              event.stopPropagation();
+              setOpen((index) => ((index ?? 0) - 1 + photos.length) % photos.length);
             }}
-            className="absolute left-3 rounded-full border border-gold/50 bg-background/20 p-2 text-background transition-colors hover:bg-background/35 sm:left-8"
+            className="absolute left-3 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background sm:left-8"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setOpen((i) => ((i ?? 0) + 1) % photos.length);
+            variant="outline"
+            size="icon"
+            onClick={(event) => {
+              event.stopPropagation();
+              setOpen((index) => ((index ?? 0) + 1) % photos.length);
             }}
-            className="absolute right-3 rounded-full border border-gold/50 bg-background/20 p-2 text-background transition-colors hover:bg-background/35 sm:right-8"
+            className="absolute right-3 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background sm:right-8"
             aria-label="Next image"
           >
             <ChevronRight className="h-5 w-5" />
-          </button>
-          <figure
-            className="animate-rise max-h-full w-full max-w-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
+          </Button>
+          <figure className="animate-rise max-h-full w-full max-w-2xl" onClick={(event) => event.stopPropagation()}>
             <img
-              src={photos[open]!.src}
-              alt={photos[open]!.alt}
+              src={openPhoto.src}
+              alt={openPhoto.alt}
               width={1024}
               height={1024}
               className="max-h-[75vh] w-full rounded-2xl border border-gold/40 object-contain"
             />
             <figcaption className="mt-4 text-center text-sm tracking-wide text-background/80">
-              {photos[open]!.alt}
+              {openPhoto.alt}
             </figcaption>
           </figure>
         </div>

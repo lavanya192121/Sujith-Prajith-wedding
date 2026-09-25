@@ -249,6 +249,121 @@ body {
   box-shadow: 0 1px 5px color-mix(in oklab, var(--gold) 20%, transparent);
 }
 
+@utility gallery-carousel {
+  perspective: 1400px;
+}
+
+@utility gallery-stage {
+  height: clamp(23rem, 42vw, 35rem);
+  width: min(100%, 72rem);
+  transform-style: preserve-3d;
+}
+
+@utility gallery-slide {
+  top: 50%;
+  left: 50%;
+  width: clamp(13.5rem, 25vw, 19rem);
+  aspect-ratio: 4 / 5;
+  opacity: 1;
+  transform-origin: center;
+  transition:
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease,
+    filter 900ms ease;
+  will-change: transform, opacity;
+}
+
+@utility gallery-slide-center {
+  z-index: 30;
+  transform: translate(-50%, -50%) translateZ(100px) scale(1.12);
+  filter: saturate(1.04);
+}
+
+@utility gallery-slide-left {
+  z-index: 20;
+  transform: translate(-138%, -50%) translateZ(0) rotateY(7deg) scale(0.86);
+  filter: saturate(0.82) brightness(0.9);
+}
+
+@utility gallery-slide-right {
+  z-index: 20;
+  transform: translate(38%, -50%) translateZ(0) rotateY(-7deg) scale(0.86);
+  filter: saturate(0.82) brightness(0.9);
+}
+
+@utility gallery-slide-hidden-left {
+  z-index: 0;
+  transform: translate(-210%, -50%) translateZ(-100px) scale(0.68);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@utility gallery-slide-hidden-right {
+  z-index: 0;
+  transform: translate(110%, -50%) translateZ(-100px) scale(0.68);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@utility gallery-frame {
+  position: relative;
+  border: 1px solid color-mix(in oklab, var(--gold) 62%, transparent);
+  background: color-mix(in oklab, var(--card) 82%, transparent);
+  box-shadow:
+    0 28px 54px -28px color-mix(in oklab, var(--sage-deep) 65%, transparent),
+    0 4px 18px -8px color-mix(in oklab, var(--gold) 35%, transparent),
+    inset 0 1px 0 color-mix(in oklab, white 65%, transparent);
+}
+
+@utility gallery-sheen {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    color-mix(in oklab, white 26%, transparent) 48%,
+    transparent 66%
+  );
+  transform: translateX(-120%);
+  transition: transform 900ms ease;
+
+  .group:hover & {
+    transform: translateX(120%);
+  }
+}
+
+@media (max-width: 639px) {
+  .gallery-stage {
+    height: 27rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .gallery-slide {
+    width: min(72vw, 17rem);
+  }
+
+  .gallery-slide-center {
+    transform: translate(-50%, -50%) translateZ(80px) scale(1);
+  }
+
+  .gallery-slide-left {
+    transform: translate(-112%, -50%) translateZ(-30px) scale(0.78);
+    opacity: 0.38;
+  }
+
+  .gallery-slide-right {
+    transform: translate(12%, -50%) translateZ(-30px) scale(0.78);
+    opacity: 0.38;
+  }
+
+  .gallery-slide-hidden-left {
+    transform: translate(-165%, -50%) translateZ(-100px) scale(0.62);
+  }
+
+  .gallery-slide-hidden-right {
+    transform: translate(65%, -50%) translateZ(-100px) scale(0.62);
+  }
+}
+
 @utility glass-card {
   background: color-mix(in oklab, var(--card) 62%, transparent);
   backdrop-filter: blur(16px) saturate(130%);
