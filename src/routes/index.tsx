@@ -19,17 +19,17 @@ import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/we
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sujith & Prajith · Wedding Invitation · 18 January 2027" },
+      { title: "Sujitha & Prajith · Wedding Invitation · 18 January 2027" },
       {
         name: "description",
         content:
-          "Sujith weds Prajith on 18 January 2027 in Kottayam, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
+          "Sujitha weds Prajith on 18 January 2027 in Kottayam, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
       },
-      { property: "og:title", content: "Sujith & Prajith · 18 January 2027" },
+      { property: "og:title", content: "Sujitha & Prajith · 18 January 2027" },
       {
         property: "og:description",
         content:
-          "With the blessings of our families, join us in Kottayam as Sujith and Prajith begin their life together.",
+          "With the blessings of our families, join us in Kottayam as Sujitha and Prajith begin their life together.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -125,7 +125,7 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
               type="button"
               onClick={onOpen}
               className="animate-float-glow pointer-events-auto cursor-pointer bg-transparent px-6 py-4 focus-visible:outline-none"
-              aria-label="Open the invitation for Sujith and Prajith"
+              aria-label="Open the invitation for Sujitha and Prajith"
             >
               <span className="font-script text-rich-gold flex items-center gap-3 text-8xl leading-none sm:gap-5 sm:text-[10rem]">
                 S
@@ -190,7 +190,7 @@ function Hero() {
           Save the date
         </p>
         <h1 className="font-display mt-6 text-5xl leading-[1.05] font-light text-sage-deep sm:text-7xl">
-          Sujith
+          Sujitha
           <span className="font-script mx-3 block text-gradient-gold text-4xl sm:inline sm:text-5xl">
             &amp;
           </span>
@@ -450,7 +450,7 @@ function Rsvp() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I am happy to confirm my presence at Sujith & Prajith's wedding on 18 January 2027.")}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I am happy to confirm my presence at Sujitha & Prajith's wedding on 18 January 2027.")}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-xs tracking-[0.25em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
@@ -489,7 +489,7 @@ function ThankYou() {
                 <CornerOrnament position="br" />
                 <img
                   src={coupleSketch.url}
-                  alt="Sketch of Sujith and Prajith"
+                  alt="Sketch of Sujitha and Prajith"
                   width={220}
                   height={280}
                   className="h-44 w-36 rounded-xl object-cover grayscale-[20%] sepia-[15%] sm:h-56 sm:w-44"
@@ -512,7 +512,7 @@ function ThankYou() {
               </p>
               <Divider className="mt-8 md:justify-start" />
               <p className="font-display mt-6 text-2xl font-light text-sage-deep">
-                Sujith <span className="font-script text-gold">&amp;</span> Prajith
+                Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
               <p className="mt-2 text-[0.6rem] tracking-[0.45em] text-muted-foreground uppercase">
                 18 January 2027 · Kottayam
