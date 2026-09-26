@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import {
   CalendarHeart,
   Clock,
@@ -84,7 +84,7 @@ function Invitation() {
 
 const REVEAL_VARIANTS = ["up", "up", "scale", "up"] as const;
 
-function useScrollReveal(ref: React.RefObject<HTMLDivElement | null>, active: boolean) {
+function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean) {
   useEffect(() => {
     const root = ref.current;
     if (!active || !root) return;
