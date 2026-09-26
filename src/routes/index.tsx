@@ -479,10 +479,10 @@ function ThankYou() {
 
       <div className="relative mx-auto max-w-3xl">
         <div className="glass-card rounded-[2rem] p-8 sm:p-12">
-          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
-            {/* Stamp-style couple sketch */}
+          <div className="flex items-center gap-5 sm:gap-8 md:gap-10">
+            {/* Stamp-style couple sketch — left, matching the desktop format on every screen */}
             <div className="relative shrink-0">
-              <div className="relative rotate-[-2deg] rounded-2xl border-2 border-gold/60 bg-background/40 p-2 shadow-lg shadow-gold/10">
+              <div className="relative rotate-[-2deg] rounded-2xl border-2 border-gold/60 bg-background/40 p-1.5 shadow-lg shadow-gold/10 sm:p-2">
                 <CornerOrnament position="tl" />
                 <CornerOrnament position="tr" />
                 <CornerOrnament position="bl" />
@@ -492,29 +492,29 @@ function ThankYou() {
                   alt="Sketch of Sujitha and Prajith"
                   width={220}
                   height={280}
-                  className="h-44 w-36 rounded-xl object-cover grayscale-[20%] sepia-[15%] sm:h-56 sm:w-44"
+                  className="h-36 w-27 rounded-xl object-cover grayscale-[20%] sepia-[15%] sm:h-56 sm:w-44"
                 />
               </div>
-              <p className="font-display mt-3 text-center text-[0.65rem] tracking-[0.35em] text-gold uppercase sm:text-xs">
+              <p className="font-display mt-2 text-center text-[0.55rem] tracking-[0.3em] text-gold uppercase sm:mt-3 sm:text-xs">
                 With love
               </p>
             </div>
 
-            {/* Thank-you message */}
-            <div className="text-center md:text-left">
-              <LotusMark className="mx-auto h-7 w-11 text-lotus md:mx-0" />
-              <h2 className="font-script mt-4 text-4xl text-gradient-gold sm:text-5xl">
+            {/* Thank-you message — right, left-aligned like the desktop format */}
+            <div className="min-w-0 text-left">
+              <LotusMark className="h-5 w-8 text-lotus sm:h-7 sm:w-11" />
+              <h2 className="font-script mt-3 text-3xl text-gradient-gold sm:mt-4 sm:text-5xl">
                 Thank you
               </h2>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:mt-5 sm:text-sm">
                 For the love, the prayers and the blessings that have brought us
                 here. We look forward to beginning this journey surrounded by you.
               </p>
-              <Divider className="mt-8 md:justify-start" />
-              <p className="font-display mt-6 text-2xl font-light text-sage-deep">
+              <Divider className="mt-5 justify-start sm:mt-8" />
+              <p className="font-display mt-4 text-xl font-light text-sage-deep sm:mt-6 sm:text-2xl">
                 Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
-              <p className="mt-2 text-[0.6rem] tracking-[0.45em] text-muted-foreground uppercase">
+              <p className="mt-1.5 text-[0.55rem] tracking-[0.4em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
                 18 January 2027 · Kottayam
               </p>
             </div>
