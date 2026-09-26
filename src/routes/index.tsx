@@ -479,7 +479,7 @@ function ThankYou() {
 
       <div className="relative mx-auto max-w-3xl">
         <div className="glass-card rounded-[2rem] p-8 sm:p-12">
-          <div className="flex items-center gap-5 sm:gap-8 md:gap-10">
+          <div className="flex items-center gap-4 sm:gap-8 md:gap-10">
             {/* Stamp-style couple sketch — left, matching the desktop format on every screen */}
             <div className="relative shrink-0">
               <div className="relative rotate-[-2deg] rounded-2xl border-2 border-gold/60 bg-background/40 p-1.5 shadow-lg shadow-gold/10 sm:p-2">
@@ -511,10 +511,10 @@ function ThankYou() {
                 here. We look forward to beginning this journey surrounded by you.
               </p>
               <Divider className="mt-5 justify-start sm:mt-8" />
-              <p className="font-display mt-4 text-xl font-light text-sage-deep sm:mt-6 sm:text-2xl">
+              <p className="font-display mt-4 whitespace-nowrap text-base font-light text-sage-deep sm:mt-6 sm:text-2xl">
                 Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
-              <p className="mt-1.5 text-[0.55rem] tracking-[0.4em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
+              <p className="mt-1.5 whitespace-nowrap text-[0.5rem] tracking-[0.18em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
                 18 January 2027 · Kottayam
               </p>
             </div>
