@@ -94,10 +94,10 @@ function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean)
       ),
     );
     targets.forEach((el, i) => {
-      if (!el.dataset.reveal) {
+      if (!el.dataset["reveal"]) {
         const siblings = Array.from(el.parentElement?.children ?? []);
         const idx = siblings.indexOf(el);
-        el.dataset.reveal = REVEAL_VARIANTS[i % REVEAL_VARIANTS.length];
+        el.dataset["reveal"] = REVEAL_VARIANTS[i % REVEAL_VARIANTS.length];
         el.style.setProperty("--reveal-delay", `${Math.min(idx, 5) * 110}ms`);
       }
     });
