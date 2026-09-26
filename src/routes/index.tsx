@@ -55,11 +55,21 @@ function Invitation() {
     return () => clearTimeout(timer);
   }, [opened]);
 
+  useScrollReveal(contentRef, opened);
+
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <Cover opened={opened} onOpen={() => setOpened(true)} />
 
-      <div ref={contentRef} aria-hidden={!opened} className={opened ? "" : "hidden"}>
+      {opened && <ScrollProgress />}
+      {opened && (
+        <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <span className="ambient-orb ambient-orb-gold" />
+          <span className="ambient-orb ambient-orb-sage" />
+        </div>
+      )}
+
+      <div ref={contentRef} aria-hidden={!opened} className={opened ? "relative z-10" : "hidden"}>
         <Hero />
         <CountdownSection />
         <Events />
@@ -69,6 +79,68 @@ function Invitation() {
         <ThankYou />
       </div>
     </main>
+  );
+}
+
+const REVEAL_VARIANTS = ["up", "up", "scale", "up"] as const;
+
+function useScrollReveal(ref: React.RefObject<HTMLDivElement | null>, active: boolean) {
+  useEffect(() => {
+    const root = ref.current;
+    if (!active || !root) return;
+    const targets = Array.from(
+      root.querySelectorAll<HTMLElement>(
+        ":scope > section > div > *, :scope > footer > div > *, [data-reveal]",
+      ),
+    );
+    targets.forEach((el, i) => {
+      if (!el.dataset.reveal) {
+        const siblings = Array.from(el.parentElement?.children ?? []);
+        const idx = siblings.indexOf(el);
+        el.dataset.reveal = REVEAL_VARIANTS[i % REVEAL_VARIANTS.length];
+        el.style.setProperty("--reveal-delay", `${Math.min(idx, 5) * 110}ms`);
+      }
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [ref, active]);
+}
+
+function ScrollProgress() {
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.scrollY / max : 0;
+      barRef.current?.style.setProperty("transform", `scaleX(${p})`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+  return (
+    <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px]">
+      <div ref={barRef} className="scroll-progress h-full origin-left" style={{ transform: "scaleX(0)" }} />
+    </div>
   );
 }
 
