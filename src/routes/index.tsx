@@ -251,10 +251,10 @@ function Hero() {
       <img
         src={couplePhoto.url}
         alt="Sujitha and Prajith together, smiling in a garden"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-60 sm:opacity-75"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/72 via-background/48 to-background" />
-      <div className="absolute inset-0 bg-background/22" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
+      <div className="absolute inset-0 bg-background/10" />
 
       <div className="animate-rise relative z-10 w-full max-w-2xl text-center">
         <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
