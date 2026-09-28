@@ -65,12 +65,6 @@ function Invitation() {
       {opened && <ScrollProgress />}
       {opened && (
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-          <img
-            src={couplePhoto.url}
-            alt=""
-            className="absolute inset-0 h-full w-full scale-110 object-cover object-center blur-md"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/82 via-background/70 to-background/88" />
           <span className="ambient-orb ambient-orb-gold" />
           <span className="ambient-orb ambient-orb-sage" />
         </div>
@@ -256,13 +250,12 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-24">
       <img
-        src={heroHands}
-        alt="Illustration of a bridal hand and Krishna's hand reaching towards each other with a lotus"
-        width={1024}
-        height={1536}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-45 sm:opacity-60"
+        src={couplePhoto.url}
+        alt="Sujitha and Prajith together, smiling in a garden"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-60 sm:opacity-75"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/45 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/72 via-background/48 to-background" />
+      <div className="absolute inset-0 bg-background/22" />
 
       <div className="animate-rise relative z-10 w-full max-w-2xl text-center">
         <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
