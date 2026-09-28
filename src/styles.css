@@ -72,29 +72,32 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.972 0.014 92);
-  --foreground: oklch(0.32 0.028 145);
-  --card: oklch(0.985 0.01 92);
-  --card-foreground: oklch(0.32 0.028 145);
-  --popover: oklch(0.985 0.01 92);
-  --popover-foreground: oklch(0.32 0.028 145);
-  --primary: oklch(0.52 0.05 148);
-  --primary-foreground: oklch(0.98 0.012 92);
-  --secondary: oklch(0.93 0.022 120);
-  --secondary-foreground: oklch(0.35 0.03 148);
-  --muted: oklch(0.94 0.018 105);
-  --muted-foreground: oklch(0.52 0.025 140);
-  --accent: oklch(0.74 0.075 85);
-  --accent-foreground: oklch(0.28 0.03 145);
+  /* Palette drawn from the couple's photo: deep foliage green, saree teal,
+     kurta lavender, temple gold on a soft ivory-mint base */
+  --background: oklch(0.965 0.02 150);
+  --foreground: oklch(0.29 0.05 158);
+  --card: oklch(0.98 0.014 140);
+  --card-foreground: oklch(0.29 0.05 158);
+  --popover: oklch(0.98 0.014 140);
+  --popover-foreground: oklch(0.29 0.05 158);
+  --primary: oklch(0.48 0.09 168);
+  --primary-foreground: oklch(0.97 0.015 140);
+  --secondary: oklch(0.91 0.035 165);
+  --secondary-foreground: oklch(0.32 0.06 165);
+  --muted: oklch(0.93 0.025 150);
+  --muted-foreground: oklch(0.48 0.035 158);
+  --accent: oklch(0.72 0.1 85);
+  --accent-foreground: oklch(0.26 0.05 158);
   --destructive: oklch(0.55 0.17 25);
   --destructive-foreground: oklch(0.98 0.012 92);
-  --border: oklch(0.87 0.03 100);
-  --input: oklch(0.87 0.03 100);
-  --ring: oklch(0.74 0.075 85);
-  --gold: oklch(0.74 0.075 85);
-  --gold-foreground: oklch(0.3 0.03 145);
-  --sage-deep: oklch(0.42 0.045 150);
-  --lotus: oklch(0.78 0.09 15);
+  --border: oklch(0.85 0.035 150);
+  --input: oklch(0.85 0.035 150);
+  --ring: oklch(0.72 0.1 85);
+  --gold: oklch(0.72 0.1 85);
+  --gold-foreground: oklch(0.28 0.05 158);
+  --sage: oklch(0.7 0.06 158);
+  --sage-deep: oklch(0.36 0.07 162);
+  --lotus: oklch(0.74 0.07 315);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
