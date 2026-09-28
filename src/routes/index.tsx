@@ -12,7 +12,6 @@ import {
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
 import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import coverArt from "@/assets/cover-divine-hands.jpg";
-import heroHands from "@/assets/hero-hands.jpg";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/wedding/Motifs";
