@@ -9,6 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 
+import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
 import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import coverArt from "@/assets/cover-divine-hands.jpg";
 import heroHands from "@/assets/hero-hands.jpg";
@@ -64,6 +65,12 @@ function Invitation() {
       {opened && <ScrollProgress />}
       {opened && (
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <img
+            src={couplePhoto.url}
+            alt=""
+            className="absolute inset-0 h-full w-full scale-110 object-cover object-center blur-md"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/82 via-background/70 to-background/88" />
           <span className="ambient-orb ambient-orb-gold" />
           <span className="ambient-orb ambient-orb-sage" />
         </div>
