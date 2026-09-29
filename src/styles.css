@@ -464,6 +464,12 @@ body {
   color: transparent;
 }
 
+@keyframes cover-exit {
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
 @keyframes veil-open-left {
   to {
     transform: translateX(-102%);
@@ -509,6 +515,9 @@ body {
   }
 }
 
+@utility animate-cover-exit {
+  animation: cover-exit 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 @utility animate-veil-left {
   animation: veil-open-left 1.5s cubic-bezier(0.7, 0, 0.2, 1) forwards;
 }
