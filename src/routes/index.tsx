@@ -199,6 +199,24 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
   );
 }
 
+function CoverVideo({ className }: { className: string }) {
+  return (
+    <video
+      className={className}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster={coverPoster.url}
+      tabIndex={-1}
+    >
+      <source src={coverIntro.url} type="video/mp4" />
+      <source src={coverIntroWebm.url} type="video/webm" />
+    </video>
+  );
+}
+
 const PETALS = [
   { id: 1, left: "38%", delay: "0s", duration: "7s", sway: "2.5rem" },
   { id: 2, left: "52%", delay: "2.2s", duration: "8.5s", sway: "-2rem" },
