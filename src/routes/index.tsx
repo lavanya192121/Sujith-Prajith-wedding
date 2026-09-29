@@ -12,6 +12,8 @@ import {
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
 import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import coverIntro from "@/assets/cover-intro.mp4.asset.json";
+import coverIntroWebm from "@/assets/cover-intro.webm.asset.json";
+import coverPoster from "@/assets/cover-poster.jpg.asset.json";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/wedding/Motifs";
@@ -158,27 +160,9 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
   return (
     <div className={`fixed inset-0 z-40 bg-background ${opened ? "animate-cover-exit" : ""}`}>
       <div aria-hidden className="absolute inset-0 overflow-hidden">
-        <video
-          src={coverIntro.url}
-          className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-90 blur-2xl"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          tabIndex={-1}
-        />
+        <CoverVideo className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-90 blur-2xl" />
         <div className="flex h-full w-full items-center justify-center">
-          <video
-            src={coverIntro.url}
-            className="relative h-full w-full object-contain object-center"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            tabIndex={-1}
-          />
+          <CoverVideo className="relative h-full w-full object-contain object-center" />
         </div>
       </div>
 
