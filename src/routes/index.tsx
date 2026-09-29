@@ -11,7 +11,7 @@ import {
 
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
 import coupleSketch from "@/assets/couple-sketch.png.asset.json";
-import coverArt from "@/assets/cover-divine-hands.jpg";
+import coverIntro from "@/assets/cover-intro.mp4.asset.json";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/wedding/Motifs";
@@ -156,31 +156,35 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
   if (dismissed) return null;
 
   return (
-    <div className="fixed inset-0 z-40 bg-background">
-      <div className="flex h-full w-full">
-        <div
-          className={`relative h-full w-1/2 overflow-hidden bg-background ${opened ? "animate-veil-left" : ""}`}
-        >
-          <div className="absolute inset-y-0 left-0 h-full w-[200%]">
-            <CoverArt />
-          </div>
-        </div>
-        <div
-          className={`relative h-full w-1/2 overflow-hidden bg-background ${opened ? "animate-veil-right" : ""}`}
-        >
-          <div className="absolute inset-y-0 right-0 h-full w-[200%]">
-            <CoverArt />
-          </div>
+    <div className={`fixed inset-0 z-40 bg-background ${opened ? "animate-cover-exit" : ""}`}>
+      <div aria-hidden className="absolute inset-0 overflow-hidden">
+        <video
+          src={coverIntro.url}
+          className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-90 blur-2xl"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          tabIndex={-1}
+        />
+        <div className="flex h-full w-full items-center justify-center">
+          <video
+            src={coverIntro.url}
+            className="relative h-full w-full object-contain object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            tabIndex={-1}
+          />
         </div>
       </div>
 
       {!opened && (
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="absolute top-[5.5vh] font-display text-[0.72rem] font-medium tracking-[0.55em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
-            Together with our families
-          </p>
-
-          <div className="relative flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-end">
+          <div className="pointer-events-none relative z-10 flex items-end justify-center">
             {PETALS.map((p) => (
               <span
                 key={p.id}
@@ -193,21 +197,16 @@ function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
                 }}
               />
             ))}
-            <button
-              type="button"
-              onClick={onOpen}
-              className="animate-float-glow pointer-events-auto cursor-pointer bg-transparent px-6 py-4 focus-visible:outline-none"
-              aria-label="Open the invitation for Sujitha and Prajith"
-            >
-              <span className="font-script text-rich-gold flex items-center gap-3 text-8xl leading-none sm:gap-5 sm:text-[10rem]">
-                S
-                <LotusMark className="h-10 w-16 text-lotus sm:h-14 sm:w-24" />
-                P
-              </span>
-            </button>
           </div>
 
-          <p className="animate-soft-pulse absolute bottom-[4.5vh] font-display text-[0.7rem] font-medium tracking-[0.45em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
+          <button
+            type="button"
+            onClick={onOpen}
+            className="absolute inset-0 z-20 cursor-pointer bg-transparent focus-visible:outline-none"
+            aria-label="Open the invitation for Sujitha and Prajith"
+          />
+
+          <p className="animate-soft-pulse pointer-events-none absolute bottom-[4.5vh] z-30 font-display text-[0.7rem] font-medium tracking-[0.45em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
             Tap to open invitation
           </p>
         </div>
@@ -222,28 +221,6 @@ const PETALS = [
   { id: 3, left: "62%", delay: "4.4s", duration: "7.6s", sway: "3rem" },
   { id: 4, left: "45%", delay: "5.8s", duration: "9s", sway: "-2.6rem" },
 ];
-
-function CoverArt() {
-  return (
-    <div className="relative h-full w-full">
-      <img
-        src={coverArt}
-        alt=""
-        aria-hidden
-        width={603}
-        height={1150}
-        className="absolute inset-0 h-full w-full scale-110 object-cover object-center opacity-90 blur-2xl"
-      />
-      <img
-        src={coverArt}
-        alt="Radha's hennaed hand reaching down towards Krishna's blue hand holding a lotus and peacock feather"
-        width={603}
-        height={1150}
-        className="relative h-full w-full object-contain object-center"
-      />
-    </div>
-  );
-}
 
 function Hero() {
   return (

@@ -464,6 +464,12 @@ body {
   color: transparent;
 }
 
+@keyframes cover-exit {
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
 @keyframes veil-open-left {
   to {
     transform: translateX(-102%);
