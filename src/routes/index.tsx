@@ -165,7 +165,7 @@ function Cover({ opened }: { opened: boolean }) {
         <div className="intro-halo absolute inset-0" />
         <LotusMark className="intro-corner-lotus absolute left-[6%] top-[9%] h-20 w-28 text-lotus/40 sm:h-28 sm:w-36" />
         <PeacockFeather className="intro-corner-feather absolute right-[8%] top-[9%] h-24 w-14 text-sage-deep/25 sm:h-36 sm:w-20" />
-        <img src={introCouple} alt="" width={768} height={1024} className="intro-couple-art relative z-10 h-[53vh] max-h-[570px] w-auto max-w-[95vw] object-contain object-bottom sm:h-[58vh]" />
+        <img src={introCouple} alt="" width={768} height={1024} className="intro-couple-art relative z-10 h-[53vh] max-h-[570px] w-auto max-w-[95vw] object-contain object-bottom sm:h-[58vh] sm:max-h-[850px]" />
       </div>
       <div className="intro-story absolute inset-0 z-20 flex flex-col items-center text-center">
         <div className="intro-monogram mt-[7vh] flex items-center gap-3 font-display text-xs tracking-[0.38em] text-sage-deep/80 sm:text-sm" aria-hidden="true">
