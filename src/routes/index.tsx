@@ -174,7 +174,7 @@ function Cover({ opened }: { opened: boolean }) {
         <div className="intro-rings absolute top-[16%] flex items-center justify-center text-gold" aria-hidden="true">
           <span className="intro-ring intro-ring-left" /><span className="intro-ring intro-ring-right" />
         </div>
-        <div className="intro-first-title absolute top-[35%] flex w-full max-w-lg flex-col items-center px-5 sm:top-[38%]">
+        <div className="intro-first-title absolute top-[35%] flex w-full max-w-lg flex-col items-center px-5 sm:top-[44%]">
           <span className="intro-flourish mb-6 h-px w-32 bg-gold/60" />
           <p className="font-display text-[clamp(2.6rem,7vh,5rem)] leading-[0.98] font-light text-sage-deep [text-shadow:0_2px_24px_var(--background)]">The next<br /><em className="font-normal">chapter</em> is<span className="intro-ellipsis">...</span></p>
           <span className="intro-flourish mt-7 h-px w-32 bg-gold/60" />
