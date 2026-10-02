@@ -11,9 +11,8 @@ import {
 
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
 import coupleSketch from "@/assets/couple-sketch.png.asset.json";
-import coverIntro from "@/assets/cover-intro.mp4.asset.json";
-import coverIntroWebm from "@/assets/cover-intro.webm.asset.json";
-import coverPoster from "@/assets/cover-poster.jpg.asset.json";
+import divineHands from "@/assets/cover-divine-hands.jpg";
+import introCouple from "@/assets/intro-couple.png";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/wedding/Motifs";
@@ -50,18 +49,16 @@ function Invitation() {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!opened) return;
-    const timer = setTimeout(() => {
-      contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 1400);
-    return () => clearTimeout(timer);
-  }, [opened]);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => setOpened(true), reducedMotion ? 300 : 9400);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useScrollReveal(contentRef, opened);
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-      <Cover opened={opened} onOpen={() => setOpened(true)} />
+      <Cover opened={opened} />
 
       {opened && <ScrollProgress />}
       {opened && (
@@ -146,74 +143,56 @@ function ScrollProgress() {
   );
 }
 
-function Cover({ opened, onOpen }: { opened: boolean; onOpen: () => void }) {
+function Cover({ opened }: { opened: boolean }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     if (!opened) return;
-    const t = setTimeout(() => setDismissed(true), 1600);
+    const t = setTimeout(() => setDismissed(true), 1400);
     return () => clearTimeout(t);
   }, [opened]);
 
   if (dismissed) return null;
 
   return (
-    <div className={`fixed inset-0 z-40 bg-background ${opened ? "animate-cover-exit" : ""}`}>
-      <div aria-hidden className="absolute inset-0 overflow-hidden">
-        <CoverVideo className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-90 blur-2xl" />
-        <div className="flex h-full w-full items-center justify-center">
-          <CoverVideo className="relative h-full w-full object-contain object-center" />
+    <div className={`intro-cover fixed inset-0 z-40 overflow-hidden bg-background ${opened ? "animate-cover-exit" : ""}`} aria-label="Sujitha and Prajith's wedding invitation opening">
+      <div className="intro-hands absolute inset-0" aria-hidden="true">
+        <img src={divineHands} alt="" className="intro-hands-back absolute inset-0 h-full w-full object-cover" />
+        <img src={divineHands} alt="" className="relative mx-auto h-full w-full object-contain" />
+      </div>
+      <div className="intro-veil absolute inset-0" aria-hidden="true" />
+      <div className="intro-couple-scene absolute inset-0 flex flex-col items-center justify-end" aria-hidden="true">
+        <div className="intro-halo absolute inset-0" />
+        <LotusMark className="intro-corner-lotus absolute left-[6%] top-[9%] h-20 w-28 text-lotus/40 sm:h-28 sm:w-36" />
+        <PeacockFeather className="intro-corner-feather absolute right-[8%] top-[9%] h-24 w-14 text-sage-deep/25 sm:h-36 sm:w-20" />
+        <img src={introCouple} alt="" width={768} height={1024} className="intro-couple-art relative z-10 h-[53vh] max-h-[570px] w-auto max-w-[95vw] object-contain object-bottom sm:h-[58vh] sm:max-h-[850px]" />
+      </div>
+      <div className="intro-story absolute inset-0 z-20 flex flex-col items-center text-center">
+        <div className="intro-monogram mt-[7vh] flex items-center gap-3 font-display text-xs tracking-[0.38em] text-sage-deep/80 sm:text-sm" aria-hidden="true">
+          <span className="intro-monogram-rule h-px w-10 bg-gold/60" /> S &amp; P <span className="intro-monogram-rule h-px w-10 bg-gold/60" />
+        </div>
+        <div className="intro-rings absolute top-[16%] flex items-center justify-center text-gold" aria-hidden="true">
+          <span className="intro-ring intro-ring-left" /><span className="intro-ring intro-ring-right" />
+        </div>
+        <div className="intro-first-title absolute top-[35%] flex w-full max-w-lg flex-col items-center px-5 sm:top-[44%]">
+          <span className="intro-flourish mb-6 h-px w-32 bg-gold/60" />
+          <p className="font-display text-[clamp(2.6rem,7vh,5rem)] leading-[0.98] font-light text-sage-deep [text-shadow:0_2px_24px_var(--background)]">The next<br /><em className="font-normal">chapter</em> is<span className="intro-ellipsis">...</span></p>
+          <span className="intro-flourish mt-7 h-px w-32 bg-gold/60" />
+        </div>
+        <div className="intro-final-title absolute top-[18%] flex w-full flex-col items-center px-5 sm:top-[19%]">
+          <span className="font-display text-xs tracking-[0.38em] text-sage-deep uppercase">Together with our families</span>
+          <LotusMark className="mt-4 h-8 w-14 text-gold" />
+          <h2 className="font-display mt-3 text-[clamp(3.4rem,8vh,6.5rem)] leading-none font-light text-sage-deep">Our <em className="font-normal">wedding</em></h2>
+          <p className="font-display mt-4 text-xl tracking-[0.1em] text-sage-deep sm:text-2xl">Sujitha <span className="font-script text-gold">&amp;</span> Prajith</p>
+          <p className="mt-3 text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">18 January 2027 · Kottayam</p>
+        </div>
+        <div className="intro-petals pointer-events-none absolute inset-0" aria-hidden="true">
+          {PETALS.map((p) => (
+            <span key={p.id} className="petal animate-petal" style={{ left: p.left, animationDelay: p.delay, animationDuration: p.duration, ["--petal-sway" as string]: p.sway }} />
+          ))}
         </div>
       </div>
-
-      {!opened && (
-        <div className="absolute inset-0 flex flex-col items-center justify-end">
-          <div className="pointer-events-none relative z-10 flex items-end justify-center">
-            {PETALS.map((p) => (
-              <span
-                key={p.id}
-                className="petal animate-petal"
-                style={{
-                  left: p.left,
-                  animationDelay: p.delay,
-                  animationDuration: p.duration,
-                  ["--petal-sway" as string]: p.sway,
-                }}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={onOpen}
-            className="absolute inset-0 z-20 cursor-pointer bg-transparent focus-visible:outline-none"
-            aria-label="Open the invitation for Sujitha and Prajith"
-          />
-
-          <p className="animate-soft-pulse pointer-events-none absolute bottom-[4.5vh] z-30 font-display text-[0.7rem] font-medium tracking-[0.45em] text-gold-foreground uppercase [text-shadow:0_1px_14px_var(--background),0_0_4px_var(--background)] sm:text-sm">
-            Tap to open invitation
-          </p>
-        </div>
-      )}
     </div>
-  );
-}
-
-function CoverVideo({ className }: { className: string }) {
-  return (
-    <video
-      className={className}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster={coverPoster.url}
-      tabIndex={-1}
-    >
-      <source src={coverIntro.url} type="video/mp4" />
-      <source src={coverIntroWebm.url} type="video/webm" />
-    </video>
   );
 }
 
@@ -230,12 +209,12 @@ function Hero() {
       <img
         src={couplePhoto.url}
         alt="Sujitha and Prajith together, smiling in a garden"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
+        className="hero-photo pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
-      <div className="animate-rise relative z-10 w-full max-w-2xl text-center">
+      <div className="hero-content relative z-10 w-full max-w-2xl text-center">
         <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
           Save the date
         </p>

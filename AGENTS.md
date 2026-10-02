@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- The invitation opening is a timed CSS/React sequence using still artwork, not video; keep automatic progression into the existing details page to preserve a hands-free experience.
