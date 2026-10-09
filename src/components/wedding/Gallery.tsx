@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
+import coupleLamp from "@/assets/gallery-couple-lamp.jpg.asset.json";
+import coupleBench from "@/assets/gallery-couple-bench.jpg.asset.json";
+import coupleGarden from "@/assets/gallery-couple-garden.jpg.asset.json";
 import lotus from "@/assets/gallery-lotus.jpg";
 import peacock from "@/assets/gallery-peacock.jpg";
 import lamp from "@/assets/gallery-lamp.jpg";
@@ -10,6 +13,9 @@ import mandap from "@/assets/gallery-mandap.jpg";
 import { Button } from "@/components/ui/button";
 
 const photos = [
+  { src: coupleGarden.url, alt: "Sujitha and Prajith smiling together among lush greenery", caption: "Two hearts, one path" },
+  { src: coupleBench.url, alt: "Sujitha and Prajith seated together on a sunlit veranda", caption: "Quiet moments of joy" },
+  { src: coupleLamp.url, alt: "Sujitha and Prajith holding hands beside the nilavilakku lamp", caption: "Held in love's embrace" },
   { src: lotus, alt: "Pink lotus in bloom, the emblem of the celebration", caption: "The sacred lotus" },
   { src: peacock, alt: "Peacock feather illustration in sage and gold", caption: "Ethereal plumage" },
   { src: lamp, alt: "Traditional brass nilavilakku lamp with jasmine", caption: "Eternal flame" },
