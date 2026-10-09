@@ -4,12 +4,6 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import coupleLamp from "@/assets/gallery-couple-lamp.jpg.asset.json";
 import coupleBench from "@/assets/gallery-couple-bench.jpg.asset.json";
 import coupleGarden from "@/assets/gallery-couple-garden.jpg.asset.json";
-import lotus from "@/assets/gallery-lotus.jpg";
-import peacock from "@/assets/gallery-peacock.jpg";
-import lamp from "@/assets/gallery-lamp.jpg";
-import mandala from "@/assets/gallery-mandala.jpg";
-import temple from "@/assets/gallery-temple.jpg";
-import mandap from "@/assets/gallery-mandap.jpg";
 import { Button } from "@/components/ui/button";
 
 const photos = [
