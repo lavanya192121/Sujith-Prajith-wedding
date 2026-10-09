@@ -20,13 +20,13 @@ import { Divider, LotusMark, MandalaRing, PeacockFeather } from "@/components/we
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sujitha & Prajith · Wedding Invitation · 18 January 2027" },
+      { title: "Sujitha & Prajith · Wedding Invitation · 12 December 2026" },
       {
         name: "description",
         content:
-          "Sujitha weds Prajith on 18 January 2027 in Kottayam, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
+          "Sujitha weds Prajith on 12 December 2026 in Kottayam, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
       },
-      { property: "og:title", content: "Sujitha & Prajith · 18 January 2027" },
+      { property: "og:title", content: "Sujitha & Prajith · 12 December 2026" },
       {
         property: "og:description",
         content:
@@ -184,7 +184,7 @@ function Cover({ opened }: { opened: boolean }) {
           <LotusMark className="mt-4 h-8 w-14 text-gold" />
           <h2 className="font-display mt-3 text-[clamp(3.4rem,8vh,6.5rem)] leading-none font-light text-sage-deep">Our <em className="font-normal">wedding</em></h2>
           <p className="font-display mt-4 text-xl tracking-[0.1em] text-sage-deep sm:text-2xl">Sujitha <span className="font-script text-gold">&amp;</span> Prajith</p>
-          <p className="mt-3 text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">18 January 2027 · Kottayam</p>
+          <p className="mt-3 text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">12 December 2026 · Kottayam</p>
         </div>
         <div className="intro-petals pointer-events-none absolute inset-0" aria-hidden="true">
           {PETALS.map((p) => (
@@ -227,10 +227,10 @@ function Hero() {
         </h1>
         <Divider className="mt-8" />
         <p className="mt-8 font-display text-2xl tracking-[0.18em] text-foreground sm:text-3xl">
-          18 · 01 · 2027
+          12 · 12 · 2026
         </p>
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
-          Monday · Kottayam, Kerala
+          Saturday · Kottayam, Kerala
         </p>
         <p className="mx-auto mt-10 max-w-md text-sm leading-relaxed text-muted-foreground italic">
           "As Radha and Krishna, two hearts reaching for one another — we ask for your
@@ -272,7 +272,7 @@ const events = [
   {
     name: "The Wedding",
     time: "10:30 AM",
-    date: "Monday, 18 January 2027",
+    date: "Saturday, 12 December 2026",
     venue: "Sree Krishna Kalyana Mandapam",
     address: "Nagampadam, Kottayam, Kerala 686001",
     note: "Muhurtham followed by sadya lunch",
@@ -280,7 +280,7 @@ const events = [
   {
     name: "The Reception",
     time: "7:00 PM",
-    date: "Monday, 18 January 2027",
+    date: "Saturday, 12 December 2026",
     venue: "Lakeview Banquet Hall",
     address: "Kodimatha, Kottayam, Kerala 686039",
     note: "Dinner, music and dancing",
@@ -479,7 +479,7 @@ function Rsvp() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I am happy to confirm my presence at Sujitha & Prajith's wedding on 18 January 2027.")}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I am happy to confirm my presence at Sujitha & Prajith's wedding on 12 December 2026.")}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-xs tracking-[0.25em] text-primary-foreground uppercase transition-opacity hover:opacity-90"
@@ -544,7 +544,7 @@ function ThankYou() {
                 Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
               <p className="mt-1.5 whitespace-nowrap text-[0.5rem] tracking-[0.18em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
-                18 January 2027 · Kottayam
+                12 December 2026 · Kottayam
               </p>
             </div>
           </div>

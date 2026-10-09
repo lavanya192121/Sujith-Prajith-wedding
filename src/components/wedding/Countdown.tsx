@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TARGET = new Date("2027-01-18T10:00:00+05:30").getTime();
+const TARGET = new Date("2026-12-12T10:00:00+05:30").getTime();
 
 function parts(diff: number) {
   const clamped = Math.max(diff, 0);
