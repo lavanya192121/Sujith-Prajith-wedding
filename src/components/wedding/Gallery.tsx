@@ -10,12 +10,6 @@ const photos = [
   { src: coupleGarden.url, alt: "Sujitha and Prajith smiling together among lush greenery", caption: "Two hearts, one path" },
   { src: coupleBench.url, alt: "Sujitha and Prajith seated together on a sunlit veranda", caption: "Quiet moments of joy" },
   { src: coupleLamp.url, alt: "Sujitha and Prajith holding hands beside the nilavilakku lamp", caption: "Held in love's embrace" },
-  { src: lotus, alt: "Pink lotus in bloom, the emblem of the celebration", caption: "The sacred lotus" },
-  { src: peacock, alt: "Peacock feather illustration in sage and gold", caption: "Ethereal plumage" },
-  { src: lamp, alt: "Traditional brass nilavilakku lamp with jasmine", caption: "Eternal flame" },
-  { src: mandala, alt: "Sage and gold mandala rangoli pattern", caption: "Infinite geometry" },
-  { src: temple, alt: "Kerala temple silhouette against a dusk sky", caption: "Sanctuary of love" },
-  { src: mandap, alt: "Floral mandap draped in sage silk and lotuses", caption: "The union canopy" },
 ];
 
 const positionClasses = {
