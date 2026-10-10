@@ -232,9 +232,10 @@ function Hero() {
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
           Saturday · Kottayam, Kerala
         </p>
-        <p className="mx-auto mt-10 max-w-md text-sm leading-relaxed text-muted-foreground italic">
-          "As Radha and Krishna, two hearts reaching for one another — we ask for your
-          presence and your blessings."
+        <p className="mx-auto mt-10 max-w-lg text-sm leading-relaxed text-muted-foreground italic">
+          "Two hearts unite in a beautiful bond of love, beginning a timeless journey
+          filled with happiness, cherished memories, and a lifetime of togetherness on
+          this special day. Our love story begins."
         </p>
       </div>
     </section>
