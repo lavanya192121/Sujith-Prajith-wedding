@@ -211,7 +211,7 @@ function Hero() {
         alt="Sujitha and Prajith together, smiling in a garden"
         className="hero-photo pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 via-60% to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/55 via-50% to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
       <div className="hero-content relative z-10 w-full max-w-2xl text-center">
