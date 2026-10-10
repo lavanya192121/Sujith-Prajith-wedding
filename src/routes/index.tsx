@@ -91,7 +91,7 @@ function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean)
       root.querySelectorAll<HTMLElement>(
         ":scope > section > div > *, :scope > footer > div > *, [data-reveal]",
       ),
-    );
+    ).filter((el) => !el.closest("[data-static]"));
     targets.forEach((el, i) => {
       if (!el.dataset["reveal"]) {
         const siblings = Array.from(el.parentElement?.children ?? []);
@@ -232,9 +232,13 @@ function Hero() {
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
           Saturday · Kottayam, Kerala
         </p>
-        <p className="mx-auto mt-10 max-w-md text-sm leading-relaxed text-muted-foreground italic">
-          "As Radha and Krishna, two hearts reaching for one another — we ask for your
-          presence and your blessings."
+      </div>
+
+      <div data-static className="absolute inset-x-0 bottom-0 z-10 px-5 pb-8 sm:pb-12">
+        <p className="font-display animate-rise mx-auto max-w-2xl text-center text-base leading-relaxed text-foreground italic sm:text-xl">
+          "Two hearts unite in a beautiful bond of love, beginning a timeless journey
+          filled with happiness, cherished memories, and a lifetime of togetherness on
+          this special day. Our love story begins."
         </p>
       </div>
     </section>
