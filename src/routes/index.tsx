@@ -232,7 +232,7 @@ function Hero() {
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
           Saturday · Kottayam, Kerala
         </p>
-        <p className="mx-auto mt-10 max-w-lg text-sm leading-relaxed text-muted-foreground italic">
+        <p className="mx-auto mt-10 max-w-lg rounded-2xl border border-border/50 bg-background/65 px-5 py-4 text-sm leading-relaxed text-muted-foreground italic backdrop-blur-md sm:px-7 sm:py-5">
           "Two hearts unite in a beautiful bond of love, beginning a timeless journey
           filled with happiness, cherished memories, and a lifetime of togetherness on
           this special day. Our love story begins."
