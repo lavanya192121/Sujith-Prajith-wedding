@@ -211,7 +211,7 @@ function Hero() {
         alt="Sujitha and Prajith together, smiling in a garden"
         className="hero-photo pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/70 via-45% to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
       <div className="hero-content relative z-10 w-full max-w-2xl text-center">
@@ -232,8 +232,8 @@ function Hero() {
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
           Saturday · Kottayam, Kerala
         </p>
-        <div className="mx-auto mt-10 max-w-2xl px-6 py-6">
-          <p className="font-display text-lg leading-relaxed text-foreground italic sm:text-2xl">
+        <div className="mx-auto mt-10 max-w-xl px-6 py-6">
+          <p className="font-display quote-glow text-lg leading-relaxed text-foreground italic sm:text-xl">
             "Two hearts unite in a beautiful bond of love, beginning a timeless journey
             filled with happiness, cherished memories, and a lifetime of togetherness on
             this special day. Our love story begins."
