@@ -460,16 +460,19 @@ body {
   &::before {
     content: "";
     position: absolute;
-    inset: -26% -16%;
+    top: -34%;
+    bottom: -34%;
+    left: -50vw;
+    right: -50vw;
     z-index: -1;
-    border-radius: 9999px;
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in oklab, var(--background) 96%, transparent),
-      color-mix(in oklab, var(--background) 80%, transparent) 62%,
-      transparent 84%
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in oklab, var(--background) 90%, transparent) 26%,
+      color-mix(in oklab, var(--background) 90%, transparent) 74%,
+      transparent
     );
-    filter: blur(16px);
+    filter: blur(18px);
     pointer-events: none;
   }
 }
