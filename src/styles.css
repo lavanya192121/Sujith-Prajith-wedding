@@ -453,30 +453,6 @@ body {
   );
 }
 
-@utility quote-halo {
-  position: relative;
-  isolation: isolate;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -34%;
-    bottom: -34%;
-    left: -50vw;
-    right: -50vw;
-    z-index: -1;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      color-mix(in oklab, var(--background) 90%, transparent) 26%,
-      color-mix(in oklab, var(--background) 90%, transparent) 74%,
-      transparent
-    );
-    filter: blur(18px);
-    pointer-events: none;
-  }
-}
-
 @utility text-gradient-gold {
   background: linear-gradient(
     100deg,
