@@ -453,14 +453,6 @@ body {
   );
 }
 
-@utility quote-glow {
-  text-shadow:
-    0 0 10px color-mix(in oklab, var(--background) 98%, transparent),
-    0 0 20px color-mix(in oklab, var(--background) 92%, transparent),
-    0 0 34px color-mix(in oklab, var(--background) 80%, transparent),
-    0 0 52px color-mix(in oklab, var(--background) 62%, transparent);
-}
-
 @utility text-gradient-gold {
   background: linear-gradient(
     100deg,
