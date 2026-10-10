@@ -226,23 +226,15 @@ function Hero() {
           Prajith
         </h1>
         <Divider className="mt-8" />
-        <div className="mt-8 flex justify-center">
-          <p className="date-chip font-display px-8 py-3 text-2xl tracking-[0.18em] text-sage-deep sm:px-11 sm:py-4 sm:text-3xl">
-            12 &middot; 12 &middot; 2026
-          </p>
-        </div>
-        <div className="mt-4 flex justify-center">
-          <p className="date-chip-soft px-5 py-2 text-[0.6rem] font-medium tracking-[0.28em] text-sage-deep/90 uppercase sm:px-8 sm:py-2.5 sm:text-xs sm:tracking-[0.35em]">
-            Saturday &middot; Kottayam, Kerala
-          </p>
-        </div>
-        <p className="mx-auto mt-10 max-w-md text-sm leading-relaxed text-muted-foreground italic">
-          "Two hearts unite in a beautiful bond of love, beginning a timeless journey
-          filled with happiness, cherished memories, and a lifetime of togetherness on
-          this special day."
+        <p className="mt-8 font-display text-2xl tracking-[0.18em] text-foreground sm:text-3xl">
+          12 · 12 · 2026
         </p>
-        <p className="font-script mt-5 text-2xl text-gold sm:text-3xl">
-          Our love story begins
+        <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
+          Saturday · Kottayam, Kerala
+        </p>
+        <p className="mx-auto mt-10 max-w-md text-sm leading-relaxed text-muted-foreground italic">
+          "As Radha and Krishna, two hearts reaching for one another — we ask for your
+          presence and your blessings."
         </p>
       </div>
     </section>
