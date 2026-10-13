@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { CalendarHeart, Clock, MapPin } from "lucide-react";
 import { Divider, LotusMark, PeacockFeather } from "./Motifs";
+import { eventMotion } from "./event-motion";
 
 const events = [
   {
@@ -34,50 +35,54 @@ export function EventCarousel() {
     if (!section || !viewport) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
-    let touching = false;
-    const paintProgress = () => {
-      const max = viewport.scrollWidth - viewport.clientWidth;
-      const progress = max > 0 ? viewport.scrollLeft / max : 1;
-      progressRef.current?.style.setProperty("--event-progress", String(progress));
-    };
+    const cards = Array.from(viewport.querySelectorAll<HTMLElement>("article"));
+    const shell = section.querySelector<HTMLElement>(".event-sticky-shell");
     const update = () => {
       frame = 0;
-      if (touching || reducedMotion.matches) return;
       const rect = section.getBoundingClientRect();
-      const distance = Math.max(1, section.offsetHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, -rect.top / (distance * 0.82)));
-      viewport.scrollLeft = progress * (viewport.scrollWidth - viewport.clientWidth);
-      paintProgress();
+      const shellHeight = shell?.offsetHeight ?? window.innerHeight;
+      section.style.setProperty("--event-shell-height", `${shellHeight}px`);
+      section.style.setProperty("--event-sticky-top", `${Math.min(0, window.innerHeight - shellHeight)}px`);
+      const distance = Math.max(1, section.offsetHeight - shellHeight);
+      const progress = Math.min(1, Math.max(0, -rect.top / distance));
+      cards.forEach((card, index) => {
+        const motion = eventMotion(reducedMotion.matches ? (progress < 0.5 ? 0 : 1) : progress, index);
+        card.style.setProperty("--event-opacity", String(motion.opacity));
+        card.style.setProperty("--event-offset", `${motion.offset}px`);
+        card.style.visibility = motion.opacity > 0 ? "visible" : "hidden";
+        card.setAttribute("aria-hidden", String(motion.opacity === 0));
+        card.inert = motion.opacity === 0;
+      });
+      progressRef.current?.style.setProperty("--event-progress", String(progress));
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
-    const touchStart = () => { touching = true; };
-    const touchEnd = () => { touching = false; };
+    const onKey = (event: KeyboardEvent) => {
+      if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"].includes(event.key)) return;
+      event.preventDefault();
+      const forward = event.key === "ArrowDown" || event.key === "ArrowRight";
+      const top = section.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: top + (forward ? section.offsetHeight - (shell?.offsetHeight ?? window.innerHeight) : 0), behavior: reducedMotion.matches ? "instant" : "smooth" });
+    };
     update();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     reducedMotion.addEventListener("change", schedule);
-    viewport.addEventListener("scroll", paintProgress, { passive: true });
-    viewport.addEventListener("touchstart", touchStart, { passive: true });
-    viewport.addEventListener("touchend", touchEnd, { passive: true });
-    viewport.addEventListener("touchcancel", touchEnd, { passive: true });
+    viewport.addEventListener("keydown", onKey);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       reducedMotion.removeEventListener("change", schedule);
-      viewport.removeEventListener("scroll", paintProgress);
-      viewport.removeEventListener("touchstart", touchStart);
-      viewport.removeEventListener("touchend", touchEnd);
-      viewport.removeEventListener("touchcancel", touchEnd);
+      viewport.removeEventListener("keydown", onKey);
     };
   }, []);
 
   return (
     <section ref={sectionRef} data-static className="event-scroll-section relative" aria-labelledby="event-details-heading">
       <div className="event-sticky-shell">
-        <div className="mx-auto w-full max-w-6xl px-5">
+        <div className="mx-auto w-full max-w-2xl px-5">
           <header className="text-center">
             <p className="text-xs text-gold uppercase">Ceremonies</p>
             <h2 id="event-details-heading" className="font-display mt-3 text-4xl font-light text-sage-deep sm:text-5xl">Event details</h2>
