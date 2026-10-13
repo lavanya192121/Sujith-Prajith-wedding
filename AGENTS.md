@@ -10,4 +10,4 @@
 <!-- LOVABLE:END -->
 
 - The invitation opening is a timed CSS/React sequence using still artwork, not video; keep automatic progression into the existing details page to preserve a hands-free experience.
-- Event Details lives in a dedicated native-scroll carousel; synchronize its horizontal position with section scrolling while preserving touch and keyboard scrolling, so confirmed ceremonies remain accessible without inventing events.
+- Event Details uses a sticky single-card stage driven by native vertical scrolling with nonoverlapping exit/entry phases; retain reversible progress, keyboard access and reduced-motion support so ceremonies stay readable in both scroll directions.
