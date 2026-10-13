@@ -56,7 +56,7 @@ function Invitation() {
   useScrollReveal(contentRef, opened);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+    <main className="relative min-h-screen overflow-x-clip bg-background text-foreground">
       <Cover opened={opened} />
 
       {opened && <ScrollProgress />}
