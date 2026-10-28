@@ -11,8 +11,8 @@ export function eventMotion(progress: number, index: number) {
   return {
     opacity: exit ? 1 - eased : eased,
     offset: exit ? -36 * eased : 36 * (1 - eased),
-    rotateY: exit ? -62 * eased : 62 * (1 - eased),
-    slide: exit ? -64 * eased : 64 * (1 - eased),
+    rotateY: exit ? -62 * eased + 0 : 62 * (1 - eased),
+    slide: exit ? -64 * eased + 0 : 64 * (1 - eased),
     scale: exit ? 1 - 0.1 * eased : 0.9 + 0.1 * eased,
     sheen: 4 * eased * (1 - eased),
   };
