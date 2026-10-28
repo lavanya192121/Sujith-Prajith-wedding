@@ -21,11 +21,11 @@ describe("single-event scroll presentation", () => {
     assert.ok(eventMotion(0.6, 1).rotateY > 30, "incoming card swings in turned");
     assert.equal(eventMotion(1, 1).rotateY, 0);
   });
-  test("rotation reverses continuously with scroll in the same direction", () => {
+  test("rotation reverses continuously with scroll, both cards swinging the same way", () => {
     for (let step = 100; step > 0; step--) {
       const current = step / 100;
       const previous = (step - 1) / 100;
-      assert.ok(eventMotion(previous, 0).rotateY <= eventMotion(current, 0).rotateY);
+      assert.ok(eventMotion(previous, 0).rotateY >= eventMotion(current, 0).rotateY);
       assert.ok(eventMotion(previous, 1).rotateY >= eventMotion(current, 1).rotateY);
     }
   });
