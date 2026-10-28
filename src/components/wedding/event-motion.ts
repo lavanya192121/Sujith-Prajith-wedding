@@ -11,7 +11,7 @@ export function eventMotion(progress: number, index: number) {
   const exit = index === 0;
   const ramp = (x: number, a: number, b: number) => Math.max(0, Math.min(1, (x - a) / (b - a)));
   return {
-    opacity: exit ? 1 - ramp(eased, 0.55, 0.9) : ramp(eased, 0, 0.3),
+    opacity: exit ? 1 - ramp(eased, 0.72, 0.96) : ramp(eased, 0, 0.28),
     offset: exit ? -36 * eased + 0 : 36 * (1 - eased),
     rotateY: exit ? -62 * eased + 0 : 62 * (1 - eased),
     slide: exit ? -64 * eased + 0 : 64 * (1 - eased),
