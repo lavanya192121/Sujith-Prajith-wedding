@@ -45,14 +45,18 @@ export function EventCarousel() {
       section.style.setProperty("--event-sticky-top", `${Math.min(0, window.innerHeight - shellHeight)}px`);
       const distance = Math.max(1, section.offsetHeight - shellHeight);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
-      cards.forEach((card, index) => {
-        const motion = eventMotion(reducedMotion.matches ? (progress < 0.5 ? 0 : 1) : progress, index);
-        card.style.setProperty("--event-opacity", String(motion.opacity));
-        card.style.setProperty("--event-offset", `${motion.offset}px`);
-        card.style.visibility = motion.opacity > 0 ? "visible" : "hidden";
-        card.setAttribute("aria-hidden", String(motion.opacity === 0));
-        card.inert = motion.opacity === 0;
-      });
+        cards.forEach((card, index) => {
+          const motion = eventMotion(reducedMotion.matches ? (progress < 0.5 ? 0 : 1) : progress, index);
+          card.style.setProperty("--event-opacity", String(motion.opacity));
+          card.style.setProperty("--event-offset", `${motion.offset.toFixed(2)}px`);
+          card.style.setProperty("--event-rotate", `${motion.rotateY.toFixed(2)}deg`);
+          card.style.setProperty("--event-slide", `${motion.slide.toFixed(2)}px`);
+          card.style.setProperty("--event-scale", motion.scale.toFixed(3));
+          card.style.setProperty("--event-sheen", motion.sheen.toFixed(3));
+          card.style.visibility = motion.opacity > 0 ? "visible" : "hidden";
+          card.setAttribute("aria-hidden", String(motion.opacity === 0));
+          card.inert = motion.opacity === 0;
+        });
       progressRef.current?.style.setProperty("--event-progress", String(progress));
     };
     const schedule = () => {
