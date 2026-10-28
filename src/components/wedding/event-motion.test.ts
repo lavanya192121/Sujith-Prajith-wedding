@@ -22,7 +22,8 @@ describe("single-event scroll presentation", () => {
     assert.equal(eventMotion(1, 1).rotateY, 0);
     // stays solid while turning; the new card is nearly opaque mid-swing
     assert.equal(eventMotion(0.35, 0).opacity, 1);
-    assert.ok(eventMotion(0.6, 1).opacity > 0.7);
+    assert.equal(eventMotion(0.65, 1).opacity, 1);
+    assert.ok(eventMotion(0.65, 1).rotateY > 25, "still turning while fully visible");
   });
   test("rotation reverses continuously with scroll, both cards swinging the same way", () => {
     for (let step = 100; step > 0; step--) {
