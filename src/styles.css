@@ -255,13 +255,19 @@ body {
 .event-glass-card {
   grid-area: 1 / 1;
   opacity: var(--event-opacity, 1);
-  transform: translateY(var(--event-offset, 0px));
+  transform: translateX(var(--event-slide, 0px)) translateY(var(--event-offset, 0px)) perspective(1100px) rotateY(var(--event-rotate, 0deg)) scale(var(--event-scale, 1));
+  transform-origin: center;
+  backface-visibility: hidden;
   will-change: transform, opacity;
   padding: 2rem;
   background: linear-gradient(135deg, color-mix(in oklab, var(--card) 88%, transparent), color-mix(in oklab, var(--secondary) 65%, transparent) 65%, color-mix(in oklab, var(--lotus) 12%, var(--card)));
   backdrop-filter: blur(28px) saturate(145%);
   border: 1px solid color-mix(in oklab, var(--gold) 55%, transparent);
-  box-shadow: inset 0 1px 0 var(--card), inset 0 0 30px color-mix(in oklab, var(--gold) 6%, transparent), 0 18px 26px -22px color-mix(in oklab, var(--sage-deep) 45%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--card),
+    inset 0 0 30px color-mix(in oklab, var(--gold) 6%, transparent),
+    0 18px 26px -22px color-mix(in oklab, var(--sage-deep) 45%, transparent),
+    0 0 48px color-mix(in oklab, var(--gold) calc(var(--event-sheen, 0) * 48%), transparent);
 }
 .event-glass-card + .event-glass-card { --event-opacity: 0; visibility: hidden; }
 .event-glass-card::after {
