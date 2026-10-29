@@ -214,21 +214,17 @@ function Hero() {
       <div className="absolute inset-0 bg-background/10" />
 
       <div className="hero-content relative z-10 w-full max-w-2xl text-center">
-        <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
+        <p className="font-medium text-[0.65rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
           Save the date
         </p>
-        <h1 className="font-display mt-6 text-5xl leading-[1.05] font-light text-sage-deep sm:text-7xl">
-          Sujitha
-          <span className="font-script mx-3 block text-gradient-gold text-4xl sm:inline sm:text-5xl">
-            &amp;
-          </span>
-          Prajith
+        <h1 className="font-script text-gradient-gold mt-6 text-6xl leading-[1.08] sm:text-8xl">
+          Sujitha <span className="text-4xl sm:text-6xl">&amp;</span> Prajith
         </h1>
         <Divider className="mt-8" />
-        <p className="mt-8 font-display text-2xl tracking-[0.18em] text-foreground sm:text-3xl">
+        <p className="font-display mt-8 text-2xl font-medium tracking-[0.18em] text-foreground sm:text-3xl">
           12 · 12 · 2026
         </p>
-        <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
+        <p className="font-medium mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
           Saturday · Kottayam, Kerala
         </p>
       </div>
