@@ -49,9 +49,9 @@
   --color-gold-foreground: var(--gold-foreground);
   --color-sage-deep: var(--sage-deep);
   --color-lotus: var(--lotus);
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-script: "Great Vibes", cursive;
-  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --font-script: "Parisienne", "Great Vibes", cursive;
+  --font-sans: "Manrope", "Jost", ui-sans-serif, system-ui, sans-serif;
   --font-event: "Karla", ui-sans-serif, system-ui, sans-serif;
   --color-ring-offset-background: var(--background);
 
