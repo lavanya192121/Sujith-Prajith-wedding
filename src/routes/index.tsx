@@ -292,14 +292,17 @@ function LocationSection() {
     <section className="relative px-5 py-20 sm:py-28">
       <div className="mx-auto max-w-4xl">
         <SectionHeading eyebrow="Finding us" title="Location & directions" />
-        <div className="glass-card mt-12 overflow-hidden rounded-3xl p-2">
-          <iframe
-            title="Map of the wedding venue in Kottayam, Kerala"
-            src={`https://maps.google.com/maps?q=${encodeURIComponent(VENUE_QUERY)}&z=13&output=embed`}
-            loading="lazy"
-            className="h-72 w-full rounded-2xl border-0 sm:h-96"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="glass-card mt-12 rounded-3xl p-8 sm:p-10">
+          <div className="mx-auto flex max-w-xs flex-col items-center">
+            <img
+              src={locationQr.url}
+              alt="QR code linking to the wedding venue location in Kottayam, Kerala"
+              className="h-56 w-56 rounded-2xl bg-white p-2 shadow-lg shadow-gold/10 sm:h-64 sm:w-64"
+            />
+            <p className="mt-5 text-center text-[0.6rem] tracking-[0.35em] text-muted-foreground uppercase sm:text-xs">
+              Scan for location
+            </p>
+          </div>
         </div>
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
