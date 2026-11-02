@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
+import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import locationQr from "@/assets/location-qr.png.asset.json";
 import divineHands from "@/assets/cover-divine-hands.jpg";
 import introCouple from "@/assets/intro-couple.png";
