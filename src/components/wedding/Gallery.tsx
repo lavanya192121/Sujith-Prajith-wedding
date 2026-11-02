@@ -4,12 +4,26 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import coupleLamp from "@/assets/gallery-couple-lamp.jpg.asset.json";
 import coupleBench from "@/assets/gallery-couple-bench.jpg.asset.json";
 import coupleGarden from "@/assets/gallery-couple-garden.jpg.asset.json";
+import laughLean from "@/assets/gallery-laugh-lean.jpg.asset.json";
+import verandaWalk from "@/assets/gallery-veranda-walk.jpg.asset.json";
+import tiledRoof from "@/assets/gallery-tiled-roof.jpg.asset.json";
+import plantBench from "@/assets/gallery-plant-bench.jpg.asset.json";
+import benchSmile from "@/assets/gallery-bench-smile.jpg.asset.json";
+import shoulderEmbrace from "@/assets/gallery-shoulder-embrace.jpg.asset.json";
+import walkBw from "@/assets/gallery-walk-bw.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 const photos = [
   { src: coupleGarden.url, alt: "Sujitha and Prajith smiling together among lush greenery", caption: "Two hearts, one path" },
   { src: coupleBench.url, alt: "Sujitha and Prajith seated together on a sunlit veranda", caption: "Quiet moments of joy" },
   { src: coupleLamp.url, alt: "Sujitha and Prajith holding hands beside the nilavilakku lamp", caption: "Held in love's embrace" },
+  { src: laughLean.url, alt: "Sujitha and Prajith laughing together, arms around each other", caption: "Laughter we share" },
+  { src: verandaWalk.url, alt: "Sujitha and Prajith walking hand in hand along a teal veranda", caption: "Walking hand in hand" },
+  { src: tiledRoof.url, alt: "Sujitha and Prajith strolling beneath a terracotta tiled roof", caption: "Steps toward forever" },
+  { src: plantBench.url, alt: "Sujitha and Prajith seated side by side on a tiled bench", caption: "Side by side" },
+  { src: benchSmile.url, alt: "Sujitha and Prajith gazing at each other and smiling", caption: "A moment to treasure" },
+  { src: shoulderEmbrace.url, alt: "Prajith embracing Sujitha as they sit close together", caption: "Wrapped in warmth" },
+  { src: walkBw.url, alt: "Sujitha and Prajith walking together in timeless black and white", caption: "Timeless together" },
 ];
 
 const positionClasses = {
