@@ -214,7 +214,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
-      <div className="hero-content relative z-10 w-full max-w-2xl text-center">
+      <div className="hero-content relative z-10 w-full max-w-2xl -translate-y-5 text-center sm:-translate-y-8">
         <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
           Save the date
         </p>
