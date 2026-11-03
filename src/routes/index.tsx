@@ -205,7 +205,7 @@ const PETALS = [
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-5 py-24">
+    <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-5 pt-24 pb-24">
       <img
         src={couplePhoto.url}
         alt="Sujitha and Prajith together, smiling in a garden"
@@ -214,19 +214,19 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
-      <div className="hero-content relative z-10 w-full max-w-2xl pt-[9vh] text-center sm:pt-[12vh]">
-        <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
-          Save the date
-        </p>
-        <h1 className="font-display mt-6 text-5xl leading-[1.05] font-light text-sage-deep sm:text-7xl">
+      <div className="hero-content relative z-10 w-full max-w-2xl text-center sm:pt-[6vh]">
+        <h1 className="font-display text-5xl leading-[1.05] font-light text-sage-deep sm:text-7xl">
           Sujitha
           <span className="font-script mx-3 block text-gradient-gold text-4xl sm:inline sm:text-5xl">
             &amp;
           </span>
           Prajith
         </h1>
-        <Divider className="mt-8" />
-        <p className="mt-8 font-display text-2xl tracking-[0.18em] text-foreground sm:text-3xl">
+        <p className="mt-4 text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:mt-6 sm:text-xs">
+          Save the date
+        </p>
+        <Divider className="mt-16 sm:mt-20" />
+        <p className="mt-16 font-display text-2xl tracking-[0.18em] text-foreground sm:mt-20 sm:text-3xl">
           12 · 12 · 2026
         </p>
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
