@@ -225,8 +225,8 @@ function Hero() {
         <p className="mt-4 text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:mt-6 sm:text-xs">
           Save the date
         </p>
-        <Divider className="mt-10 sm:mt-16" />
-        <p className="mt-10 font-display text-2xl tracking-[0.18em] text-foreground sm:mt-16 sm:text-3xl">
+        <Divider className="mt-16 sm:mt-20" />
+        <p className="mt-16 font-display text-2xl tracking-[0.18em] text-foreground sm:mt-20 sm:text-3xl">
           12 · 12 · 2026
         </p>
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
