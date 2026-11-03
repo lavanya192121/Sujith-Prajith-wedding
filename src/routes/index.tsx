@@ -205,7 +205,7 @@ const PETALS = [
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-24">
+    <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-5 py-24">
       <img
         src={couplePhoto.url}
         alt="Sujitha and Prajith together, smiling in a garden"
@@ -214,7 +214,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/28 to-background" />
       <div className="absolute inset-0 bg-background/10" />
 
-      <div className="hero-content relative z-10 w-full max-w-2xl -translate-y-5 text-center sm:-translate-y-8">
+      <div className="hero-content relative z-10 w-full max-w-2xl pt-[9vh] text-center sm:pt-[12vh]">
         <p className="text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:text-xs">
           Save the date
         </p>
