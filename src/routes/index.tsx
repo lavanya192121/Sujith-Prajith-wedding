@@ -165,7 +165,7 @@ function Cover({ opened }: { opened: boolean }) {
         <div className="intro-halo absolute inset-0" />
         <LotusMark className="intro-corner-lotus absolute left-[6%] top-[9%] h-20 w-28 text-lotus/40 sm:h-28 sm:w-36" />
         <PeacockFeather className="intro-corner-feather absolute right-[8%] top-[9%] h-24 w-14 text-sage-deep/25 sm:h-36 sm:w-20" />
-        <img src={introCouple} alt="" width={848} height={1264} className="intro-couple-art relative z-10 h-[53vh] max-h-[570px] w-auto max-w-[95vw] object-contain object-bottom sm:h-[58vh] sm:max-h-[850px]" />
+        <img src={introCouple} alt="" width={848} height={1264} className="intro-couple-art relative z-10 h-[48vh] max-h-[540px] w-auto max-w-[95vw] object-contain object-bottom sm:h-[53vh] sm:max-h-[820px]" />
       </div>
       <div className="intro-story absolute inset-0 z-20 flex flex-col items-center text-center">
         <div className="intro-monogram mt-[7vh] flex items-center gap-3 font-display text-xs tracking-[0.38em] text-sage-deep/80 sm:text-sm" aria-hidden="true">
@@ -179,7 +179,7 @@ function Cover({ opened }: { opened: boolean }) {
           <p className="font-display text-[clamp(2.6rem,7vh,5rem)] leading-[0.98] font-light text-sage-deep [text-shadow:0_2px_24px_var(--background)]">The next<br /><em className="font-normal">chapter</em> is<span className="intro-ellipsis">...</span></p>
           <span className="intro-flourish mt-7 h-px w-32 bg-gold/60" />
         </div>
-        <div className="intro-final-title absolute top-[18%] flex w-full flex-col items-center px-5 sm:top-[19%]">
+        <div className="intro-final-title absolute top-[14%] flex w-full flex-col items-center px-5 sm:top-[15%]">
           <span className="font-display text-xs tracking-[0.38em] text-sage-deep uppercase">Together with our families</span>
           <LotusMark className="mt-4 h-8 w-14 text-gold" />
           <h2 className="font-display mt-3 text-[clamp(3.4rem,8vh,6.5rem)] leading-none font-light text-sage-deep">Our <em className="font-normal">wedding</em></h2>
