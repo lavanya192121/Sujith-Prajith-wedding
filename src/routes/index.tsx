@@ -307,8 +307,9 @@ function LocationSection() {
         </div>
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Thiruvalla is a two-hour drive from Cochin International Airport and ten
-            minutes from Thiruvalla Railway Station.
+            The venue at SNDP Building, Kaviyoor, Thiruvalla is a two-hour drive
+            from Cochin International Airport and ten minutes from Thiruvalla
+            Railway Station.
           </p>
           <a
             href={MAPS_LINK}
