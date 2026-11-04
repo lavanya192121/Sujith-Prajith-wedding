@@ -24,13 +24,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sujitha weds Prajith on 12 December 2026 in Kottayam, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
+          "Sujitha weds Prajith on 12 December 2026 in Thiruvalla, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
       },
       { property: "og:title", content: "Sujitha & Prajith · 12 December 2026" },
       {
         property: "og:description",
         content:
-          "With the blessings of our families, join us in Kottayam as Sujitha and Prajith begin their life together.",
+          "With the blessings of our families, join us in Thiruvalla as Sujitha and Prajith begin their life together.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUMBER = "919400000000";
 const PHONE_NUMBER = "+919400000000";
-const VENUE_QUERY = "Kottayam, Kerala, India";
+const VENUE_QUERY = "Thiruvalla, Kerala, India";
 const MAPS_LINK = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(VENUE_QUERY)}`;
 
 function Invitation() {
@@ -184,7 +184,7 @@ function Cover({ opened }: { opened: boolean }) {
           <LotusMark className="mt-4 h-8 w-14 text-gold" />
           <h2 className="font-display mt-3 text-[clamp(3.4rem,8vh,6.5rem)] leading-none font-light text-sage-deep">Our <em className="font-normal">wedding</em></h2>
           <p className="font-display mt-4 text-xl tracking-[0.1em] text-sage-deep sm:text-2xl">Sujitha <span className="font-script text-gold">&amp;</span> Prajith</p>
-          <p className="mt-3 text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">12 December 2026 · Kottayam</p>
+          <p className="mt-3 text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">12 December 2026 · Thiruvalla</p>
         </div>
         <div className="intro-petals pointer-events-none absolute inset-0" aria-hidden="true">
           {PETALS.map((p) => (
@@ -230,7 +230,7 @@ function Hero() {
           12 · 12 · 2026
         </p>
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
-          Saturday · Kottayam, Kerala
+          Saturday · Thiruvalla, Kerala
         </p>
       </div>
 
@@ -297,7 +297,7 @@ function LocationSection() {
           <div className="mx-auto flex max-w-xs flex-col items-center">
             <img
               src={locationQr.url}
-              alt="QR code linking to the wedding venue location in Kottayam, Kerala"
+              alt="QR code linking to the wedding venue location in Thiruvalla, Kerala"
               className="h-56 w-56 rounded-2xl bg-white p-2 shadow-lg shadow-gold/10 sm:h-64 sm:w-64"
             />
             <p className="mt-5 text-center text-[0.6rem] tracking-[0.35em] text-muted-foreground uppercase sm:text-xs">
@@ -307,8 +307,8 @@ function LocationSection() {
         </div>
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Kottayam is a two-hour drive from Cochin International Airport and ten
-            minutes from Kottayam Railway Station.
+            Thiruvalla is a two-hour drive from Cochin International Airport and ten
+            minutes from Thiruvalla Railway Station.
           </p>
           <a
             href={MAPS_LINK}
@@ -403,7 +403,7 @@ function ThankYou() {
                 Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
               <p className="mt-1.5 whitespace-nowrap text-[0.5rem] tracking-[0.18em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
-                12 December 2026 · Kottayam
+                12 December 2026 · Thiruvalla
               </p>
             </div>
           </div>
