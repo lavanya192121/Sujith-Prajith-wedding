@@ -6,10 +6,10 @@ import { eventMotion } from "./event-motion";
 const events = [
   {
     name: "The Wedding",
-    time: "10:30 AM",
+    time: "12:10 PM – 1:40 PM",
     date: "Saturday, 12 December 2026",
-    venue: "Sree Krishna Kalyana Mandapam",
-    address: "Nagampadam, Thiruvalla, Kerala 686001",
+    venue: "SNDP Building",
+    address: "Kaviyoor, Thiruvalla, Kerala 689582",
     note: "Muhurtham followed by sadya lunch",
     eyebrow: "Sacred vows",
   },

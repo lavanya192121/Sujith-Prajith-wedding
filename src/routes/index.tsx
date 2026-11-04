@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUMBER = "919400000000";
 const PHONE_NUMBER = "+919400000000";
-const VENUE_QUERY = "Thiruvalla, Kerala, India";
+const VENUE_QUERY = "SNDP Building, Kaviyoor, Thiruvalla, Kerala, India";
 const MAPS_LINK = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(VENUE_QUERY)}`;
 
 function Invitation() {
