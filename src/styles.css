@@ -284,6 +284,8 @@ body {
 .event-card-corner-bottom { bottom: 12px; right: 12px; border-bottom: 1px solid; border-right: 1px solid; border-bottom-right-radius: 12px; }
 .event-carousel-progress { --event-progress: 0; }
 .event-progress-marker { width: 50%; left: calc(var(--event-progress) * 50%); }
+.event-scroll-section[data-single] { height: auto; }
+.event-scroll-section[data-single] .event-sticky-shell { position: static; min-height: 0; }
 @media (max-width: 767px) {
   .event-sticky-shell { padding-block: 2rem; }
   .event-glass-card { padding: 1.5rem; }
@@ -317,6 +319,30 @@ body {
 
 @utility gallery-carousel {
   perspective: 1400px;
+}
+
+.lightbox-overlay {
+  animation: lightbox-fade 0.3s ease-out both;
+}
+.lightbox-figure {
+  animation: lightbox-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.lightbox-control {
+  transition: background-color 0.2s ease;
+}
+@keyframes lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes lightbox-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay,
+  .lightbox-figure {
+    animation: none;
+  }
 }
 
 @utility gallery-stage {

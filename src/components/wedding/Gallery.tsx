@@ -168,7 +168,7 @@ export function Gallery() {
 
       {openPhoto && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-sage-deep/85 p-4 backdrop-blur-md"
+          className="lightbox-overlay fixed inset-0 z-50 flex items-center justify-center bg-sage-deep/85 p-4 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
           onClick={() => setOpen(null)}
@@ -178,7 +178,7 @@ export function Gallery() {
             variant="outline"
             size="icon"
             onClick={() => setOpen(null)}
-            className="absolute top-5 right-5 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background"
+            className="lightbox-control absolute top-4 right-4 z-10 h-11 w-11 rounded-full border border-gold/60 bg-sage-deep/75 text-background shadow-lg backdrop-blur-md hover:bg-sage-deep/95 sm:top-6 sm:right-6"
             aria-label="Close preview"
           >
             <X className="h-5 w-5" />
@@ -191,7 +191,7 @@ export function Gallery() {
               event.stopPropagation();
               setOpen((index) => ((index ?? 0) - 1 + photos.length) % photos.length);
             }}
-            className="absolute left-3 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background sm:left-8"
+            className="lightbox-control absolute top-1/2 left-3 z-10 h-12 w-12 -translate-y-1/2 rounded-full border border-gold/60 bg-sage-deep/75 text-background shadow-lg backdrop-blur-md hover:bg-sage-deep/95 sm:left-6 sm:h-11 sm:w-11"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -204,12 +204,12 @@ export function Gallery() {
               event.stopPropagation();
               setOpen((index) => ((index ?? 0) + 1) % photos.length);
             }}
-            className="absolute right-3 rounded-full border-gold/50 bg-background/20 text-background hover:bg-background/35 hover:text-background sm:right-8"
+            className="lightbox-control absolute top-1/2 right-3 z-10 h-12 w-12 -translate-y-1/2 rounded-full border border-gold/60 bg-sage-deep/75 text-background shadow-lg backdrop-blur-md hover:bg-sage-deep/95 sm:right-6 sm:h-11 sm:w-11"
             aria-label="Next image"
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
-          <figure className="animate-rise max-h-full w-full max-w-2xl" onClick={(event) => event.stopPropagation()}>
+          <figure key={open} className="lightbox-figure max-h-full w-full max-w-2xl" onClick={(event) => event.stopPropagation()}>
             <img
               src={openPhoto.src}
               alt={openPhoto.alt}
