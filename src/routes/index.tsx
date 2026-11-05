@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sujitha weds Prajith on 12 December 2026 in Thiruvalla, Kerala. Wedding and reception details, countdown, gallery, directions and RSVP.",
+          "Sujitha weds Prajith on 12 December 2026 in Thiruvalla, Kerala. Wedding details, countdown, gallery, directions and RSVP.",
       },
       { property: "og:title", content: "Sujitha & Prajith · 12 December 2026" },
       {

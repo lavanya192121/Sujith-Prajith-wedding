@@ -13,29 +13,20 @@ const events = [
     note: "Muhurtham followed by sadya lunch",
     eyebrow: "Sacred vows",
   },
-  {
-    name: "The Reception",
-    time: "7:00 PM",
-    date: "Saturday, 12 December 2026",
-    venue: "Lakeview Banquet Hall",
-    address: "Kodimatha, Thiruvalla, Kerala 686039",
-    note: "Dinner, music and dancing",
-    eyebrow: "Evening celebration",
-  },
 ];
 
 export function EventCarousel() {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const viewport = viewportRef.current;
     if (!section || !viewport) return;
+    const cards = Array.from(viewport.querySelectorAll<HTMLElement>("article"));
+    if (cards.length < 2) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
-    const cards = Array.from(viewport.querySelectorAll<HTMLElement>("article"));
     const shell = section.querySelector<HTMLElement>(".event-sticky-shell");
     const update = () => {
       frame = 0;
@@ -57,7 +48,6 @@ export function EventCarousel() {
           card.setAttribute("aria-hidden", String(motion.opacity === 0));
           card.inert = motion.opacity === 0;
         });
-      progressRef.current?.style.setProperty("--event-progress", String(progress));
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -84,7 +74,7 @@ export function EventCarousel() {
   }, []);
 
   return (
-    <section ref={sectionRef} data-static className="event-scroll-section relative" aria-labelledby="event-details-heading">
+    <section ref={sectionRef} data-static data-single={events.length === 1 ? "" : undefined} className="event-scroll-section relative" aria-labelledby="event-details-heading">
       <div className="event-sticky-shell">
         <div className="mx-auto w-full max-w-2xl px-5">
           <header className="text-center">
@@ -92,7 +82,7 @@ export function EventCarousel() {
             <h2 id="event-details-heading" className="font-display mt-3 text-4xl font-light text-sage-deep sm:text-5xl">Event details</h2>
             <Divider className="mt-5" />
           </header>
-          <div ref={viewportRef} className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding and reception events" tabIndex={0}>
+          <div ref={viewportRef} className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding ceremony details" tabIndex={0}>
             <div className="event-carousel-track">
               {events.map((event, index) => (
                 <article key={event.name} className="event-glass-card group relative min-w-0 overflow-hidden rounded-2xl">
@@ -128,11 +118,6 @@ export function EventCarousel() {
                 </article>
               ))}
             </div>
-          </div>
-          <div ref={progressRef} className="event-carousel-progress mx-auto mt-6 flex max-w-xs items-center gap-4" aria-hidden="true">
-            <span className="font-display text-sm text-muted-foreground">01</span>
-            <div className="event-progress-rail relative h-px flex-1 bg-border"><span className="event-progress-marker absolute top-0 h-px bg-gold" /></div>
-            <span className="font-display text-sm text-muted-foreground">02</span>
           </div>
         </div>
       </div>
