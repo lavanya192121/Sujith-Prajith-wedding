@@ -338,6 +338,12 @@ body {
   from { opacity: 0; transform: translateY(16px) scale(0.97); }
   to { opacity: 1; transform: none; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay,
+  .lightbox-figure {
+    animation: none;
+  }
+}
 
 @utility gallery-stage {
   height: clamp(23rem, 42vw, 35rem);
