@@ -169,19 +169,6 @@ function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void
         <div className="intro-rings absolute top-[16%] flex items-center justify-center text-gold" aria-hidden="true">
           <span className="intro-ring intro-ring-left" /><span className="intro-ring intro-ring-right" />
         </div>
-        <div className="absolute top-[35%] flex w-full max-w-lg items-center justify-center px-5 sm:top-[44%]">
-          <video
-            src={weddingOpening.url}
-            poster={divineHands}
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            aria-label="Animated wedding invitation artwork"
-            onEnded={onFinished}
-            className="h-[34vh] max-h-[360px] w-auto max-w-[90vw] object-contain"
-          />
-        </div>
         <div className="intro-final-title absolute top-[14%] flex w-full flex-col items-center px-5 sm:top-[15%]">
           <span className="font-display text-xs tracking-[0.38em] text-sage-deep uppercase">Together with our families</span>
           <LotusMark className="mt-4 h-8 w-14 text-gold" />
