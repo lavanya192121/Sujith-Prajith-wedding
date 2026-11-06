@@ -195,6 +195,18 @@ function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void
           ))}
         </div>
       </div>
+      {!opened && (
+        <video
+          src={weddingOpening.url}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          aria-label="Wedding invitation opening video"
+          onEnded={onFinished}
+          className="absolute inset-0 z-50 h-full w-full bg-background object-contain"
+        />
+      )}
     </div>
   );
 }
