@@ -53,7 +53,7 @@ function Invitation() {
 
   return (
     <main className="relative min-h-screen overflow-x-clip bg-background text-foreground">
-      <Cover opened={opened} />
+      <Cover opened={opened} onFinished={() => setOpened(true)} />
 
       {opened && <ScrollProgress />}
       {opened && (
@@ -138,7 +138,7 @@ function ScrollProgress() {
   );
 }
 
-function Cover({ opened }: { opened: boolean }) {
+function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -178,7 +178,7 @@ function Cover({ opened }: { opened: boolean }) {
             playsInline
             preload="auto"
             aria-label="Animated wedding invitation artwork"
-            onEnded={() => setOpened(true)}
+            onEnded={onFinished}
             className="h-[34vh] max-h-[360px] w-auto max-w-[90vw] object-contain"
           />
         </div>
