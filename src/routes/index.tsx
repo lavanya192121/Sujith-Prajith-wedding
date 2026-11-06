@@ -12,6 +12,7 @@ import coupleSketch from "@/assets/couple-sketch.png.asset.json";
 import locationQr from "@/assets/location-qr.png.asset.json";
 import divineHands from "@/assets/cover-divine-hands.jpg";
 import introCouple from "@/assets/intro-couple.png";
+import weddingOpening from "@/assets/wedding-opening.mp4.asset.json";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { EventCarousel } from "@/components/wedding/EventCarousel";
@@ -48,17 +49,11 @@ function Invitation() {
   const [opened, setOpened] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const timer = window.setTimeout(() => setOpened(true), reducedMotion ? 300 : 9400);
-    return () => window.clearTimeout(timer);
-  }, []);
-
   useScrollReveal(contentRef, opened);
 
   return (
     <main className="relative min-h-screen overflow-x-clip bg-background text-foreground">
-      <Cover opened={opened} />
+      <Cover opened={opened} onFinished={() => setOpened(true)} />
 
       {opened && <ScrollProgress />}
       {opened && (
@@ -143,7 +138,7 @@ function ScrollProgress() {
   );
 }
 
-function Cover({ opened }: { opened: boolean }) {
+function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -174,10 +169,18 @@ function Cover({ opened }: { opened: boolean }) {
         <div className="intro-rings absolute top-[16%] flex items-center justify-center text-gold" aria-hidden="true">
           <span className="intro-ring intro-ring-left" /><span className="intro-ring intro-ring-right" />
         </div>
-        <div className="intro-first-title absolute top-[35%] flex w-full max-w-lg flex-col items-center px-5 sm:top-[44%]">
-          <span className="intro-flourish mb-6 h-px w-32 bg-gold/60" />
-          <p className="font-display text-[clamp(2.6rem,7vh,5rem)] leading-[0.98] font-light text-sage-deep [text-shadow:0_2px_24px_var(--background)]">The next<br /><em className="font-normal">chapter</em> is<span className="intro-ellipsis">...</span></p>
-          <span className="intro-flourish mt-7 h-px w-32 bg-gold/60" />
+        <div className="absolute top-[35%] flex w-full max-w-lg items-center justify-center px-5 sm:top-[44%]">
+          <video
+            src={weddingOpening.url}
+            poster={divineHands}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            aria-label="Animated wedding invitation artwork"
+            onEnded={onFinished}
+            className="h-[34vh] max-h-[360px] w-auto max-w-[90vw] object-contain"
+          />
         </div>
         <div className="intro-final-title absolute top-[14%] flex w-full flex-col items-center px-5 sm:top-[15%]">
           <span className="font-display text-xs tracking-[0.38em] text-sage-deep uppercase">Together with our families</span>

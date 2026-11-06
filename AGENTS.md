@@ -9,5 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- The invitation opening is a timed CSS/React sequence using still artwork, not video; keep automatic progression into the existing details page to preserve a hands-free experience.
+- The opening plays the uploaded wedding clip in place of “The next chapter is…” and automatically advances to the existing invitation details when playback ends.
 - Event Details uses a sticky single-card stage driven by native vertical scrolling with nonoverlapping exit/entry phases; retain reversible progress, keyboard access and reduced-motion support so ceremonies stay readable in both scroll directions.
