@@ -63,7 +63,7 @@ function Invitation() {
         </div>
       )}
 
-      <div ref={contentRef} aria-hidden={!opened} className={opened ? "relative z-10" : "hidden"}>
+      <div ref={contentRef} aria-hidden={!opened} className={opened ? "invitation-fade-in relative z-10" : "hidden"}>
         <Hero />
         <CountdownSection />
         <EventCarousel />
@@ -140,19 +140,12 @@ function ScrollProgress() {
 
 function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void }) {
   const [dismissed, setDismissed] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
 
   useEffect(() => {
     if (!opened) return;
     const t = setTimeout(() => setDismissed(true), 1400);
     return () => clearTimeout(t);
   }, [opened]);
-
-  useEffect(() => {
-    if (!videoEnded) return;
-    const t = setTimeout(onFinished, 1400);
-    return () => clearTimeout(t);
-  }, [videoEnded, onFinished]);
 
   if (dismissed) return null;
 
@@ -189,7 +182,7 @@ function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void
           ))}
         </div>
       </div>
-      {!opened && !videoEnded && (
+      {!opened && (
         <video
           src={weddingOpening.url}
           autoPlay
@@ -197,7 +190,7 @@ function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void
           playsInline
           preload="auto"
           aria-label="Wedding invitation opening video"
-          onEnded={() => setVideoEnded(true)}
+          onEnded={onFinished}
           className="absolute inset-0 z-50 h-full w-full bg-background object-contain"
         />
       )}

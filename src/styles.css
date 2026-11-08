@@ -560,6 +560,15 @@ body {
   }
 }
 
+.invitation-fade-in {
+  animation: invitation-fade-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes invitation-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* A timed, UI-only opening: artwork, typography, and couple move as separate layers. */
 .intro-cover { isolation: isolate; }
 .intro-hands { animation: intro-hands-out 2s 4.5s ease-in-out both; }
