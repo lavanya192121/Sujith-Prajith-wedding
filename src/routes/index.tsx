@@ -47,23 +47,28 @@ const MAPS_LINK = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
 
 function Invitation() {
   const [opened, setOpened] = useState(false);
+  const [invitationVisible, setInvitationVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useScrollReveal(contentRef, opened);
+  useScrollReveal(contentRef, invitationVisible);
 
   return (
     <main className="relative min-h-screen overflow-x-clip bg-background text-foreground">
-      <Cover opened={opened} onFinished={() => setOpened(true)} />
+      <Cover
+        opened={opened}
+        onVideoEnded={() => setOpened(true)}
+        onFinished={() => setInvitationVisible(true)}
+      />
 
-      {opened && <ScrollProgress />}
-      {opened && (
+      {invitationVisible && <ScrollProgress />}
+      {invitationVisible && (
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
           <span className="ambient-orb ambient-orb-gold" />
           <span className="ambient-orb ambient-orb-sage" />
         </div>
       )}
 
-      <div ref={contentRef} aria-hidden={!opened} className={opened ? "invitation-fade-in relative z-10" : "hidden"}>
+      <div ref={contentRef} aria-hidden={!invitationVisible} className={invitationVisible ? "invitation-fade-in relative z-10" : "hidden"}>
         <Hero />
         <CountdownSection />
         <EventCarousel />
@@ -138,14 +143,17 @@ function ScrollProgress() {
   );
 }
 
-function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void }) {
+function Cover({ opened, onVideoEnded, onFinished }: { opened: boolean; onVideoEnded: () => void; onFinished: () => void }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     if (!opened) return;
-    const t = setTimeout(() => setDismissed(true), 1400);
+    const t = setTimeout(() => {
+      setDismissed(true);
+      onFinished();
+    }, 1400);
     return () => clearTimeout(t);
-  }, [opened]);
+  }, [opened, onFinished]);
 
   if (dismissed) return null;
 
@@ -190,7 +198,7 @@ function Cover({ opened, onFinished }: { opened: boolean; onFinished: () => void
           playsInline
           preload="auto"
           aria-label="Wedding invitation opening video"
-          onEnded={onFinished}
+          onEnded={onVideoEnded}
           className="absolute inset-0 z-50 h-full w-full bg-background object-contain"
         />
       )}
