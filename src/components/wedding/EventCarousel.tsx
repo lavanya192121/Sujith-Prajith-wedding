@@ -6,7 +6,7 @@ import { eventMotion } from "./event-motion";
 const events = [
   {
     name: "The Wedding",
-    time: "12:10 PM – 1:40 PM",
+    time: "12:18 PM – 12:40 PM",
     date: "Saturday, 12 December 2026",
     venue: "SNDP Building",
     address: "Kaviyoor, Thiruvalla, Kerala 689582",
