@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import {
   MapPin,
   MessageCircle,
@@ -49,6 +49,8 @@ function Invitation() {
   const [opened, setOpened] = useState(false);
   const [invitationVisible, setInvitationVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const handleVideoEnded = useCallback(() => setOpened(true), []);
+  const handleCoverFinished = useCallback(() => setInvitationVisible(true), []);
 
   useScrollReveal(contentRef, invitationVisible);
 
@@ -56,8 +58,8 @@ function Invitation() {
     <main className="relative min-h-screen overflow-x-clip bg-background text-foreground">
       <Cover
         opened={opened}
-        onVideoEnded={() => setOpened(true)}
-        onFinished={() => setInvitationVisible(true)}
+        onVideoEnded={handleVideoEnded}
+        onFinished={handleCoverFinished}
       />
 
       {invitationVisible && <ScrollProgress />}
