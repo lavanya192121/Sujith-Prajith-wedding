@@ -96,7 +96,7 @@ function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean)
     ).filter(
       (el) =>
         !el.closest("[data-static]") ||
-        el.matches(".event-sticky-shell header[data-reveal]"),
+        Boolean(el.closest(".event-sticky-shell") && el.hasAttribute("data-reveal")),
     );
     targets.forEach((el, i) => {
       if (!el.dataset["reveal"]) {

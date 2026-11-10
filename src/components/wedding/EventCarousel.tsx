@@ -82,7 +82,7 @@ export function EventCarousel() {
             <h2 id="event-details-heading" className="font-display mt-3 text-4xl font-light text-sage-deep sm:text-5xl">Event details</h2>
             <Divider className="mt-5" />
           </header>
-          <div ref={viewportRef} className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding ceremony details" tabIndex={0}>
+          <div ref={viewportRef} data-reveal="scale" className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding ceremony details" tabIndex={0}>
             <div className="event-carousel-track">
               {events.map((event, index) => (
                 <article key={event.name} className="event-glass-card group relative min-w-0 overflow-hidden rounded-2xl">
