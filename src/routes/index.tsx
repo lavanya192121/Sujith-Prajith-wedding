@@ -83,7 +83,7 @@ function Invitation() {
   );
 }
 
-const REVEAL_VARIANTS = ["up", "up", "scale", "up"] as const;
+const REVEAL_VARIANTS = ["up", "scale", "left", "up", "scale", "left"] as const;
 
 function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean) {
   useEffect(() => {
@@ -91,24 +91,23 @@ function useScrollReveal(ref: RefObject<HTMLDivElement | null>, active: boolean)
     if (!active || !root) return;
     const targets = Array.from(
       root.querySelectorAll<HTMLElement>(
-        ":scope > section > div > *, :scope > footer > div > *, [data-reveal]",
+        ":scope > section:not([data-static]) > .mx-auto, :scope > footer > .relative.mx-auto, [data-reveal]",
       ),
-    ).filter((el) => !el.closest("[data-static]"));
+    ).filter(
+      (el) =>
+        !el.closest("[data-static]") ||
+        el.matches(".event-sticky-shell header[data-reveal]"),
+    );
     targets.forEach((el, i) => {
       if (!el.dataset["reveal"]) {
-        const siblings = Array.from(el.parentElement?.children ?? []);
-        const idx = siblings.indexOf(el);
         el.dataset["reveal"] = REVEAL_VARIANTS[i % REVEAL_VARIANTS.length];
-        el.style.setProperty("--reveal-delay", `${Math.min(idx, 5) * 110}ms`);
       }
+      el.style.setProperty("--reveal-delay", `${(i % 3) * 70}ms`);
     });
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            io.unobserve(entry.target);
-          }
+          entry.target.classList.toggle("is-revealed", entry.isIntersecting);
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
