@@ -77,12 +77,12 @@ export function EventCarousel() {
     <section ref={sectionRef} data-static data-single={events.length === 1 ? "" : undefined} className="event-scroll-section relative" aria-labelledby="event-details-heading">
       <div className="event-sticky-shell">
         <div className="mx-auto w-full max-w-2xl px-5">
-          <header className="text-center">
+          <header data-reveal="up" className="text-center">
             <p className="text-xs text-gold uppercase">Ceremonies</p>
             <h2 id="event-details-heading" className="font-display mt-3 text-4xl font-light text-sage-deep sm:text-5xl">Event details</h2>
             <Divider className="mt-5" />
           </header>
-          <div ref={viewportRef} className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding ceremony details" tabIndex={0}>
+          <div ref={viewportRef} data-reveal="scale" className="event-carousel-viewport mt-8 sm:mt-12" role="region" aria-label="Wedding ceremony details" tabIndex={0}>
             <div className="event-carousel-track">
               {events.map((event, index) => (
                 <article key={event.name} className="event-glass-card group relative min-w-0 overflow-hidden rounded-2xl">
