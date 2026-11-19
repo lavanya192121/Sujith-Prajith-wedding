@@ -1,11 +1,11 @@
 {
-  "version": 1,
-  "asset_id": "33c49ba0-4590-4b4f-bd64-ebf49cea9647",
-  "project_id": "ba64381c-a43f-4599-8bde-daa2e588db8c",
-  "url": "/__l5e/assets-v1/33c49ba0-4590-4b4f-bd64-ebf49cea9647/gallery-veranda-walk.jpg",
-  "r2_key": "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/33c49ba0-4590-4b4f-bd64-ebf49cea9647/gallery-veranda-walk.jpg",
-  "original_filename": "gallery-veranda-walk.jpg",
-  "size": 176040,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-02T10:41:42Z"
+    "version":  1,
+    "asset_id":  "33c49ba0-4590-4b4f-bd64-ebf49cea9647",
+    "project_id":  "ba64381c-a43f-4599-8bde-daa2e588db8c",
+    "url":  "/gallery-veranda-walk.jpg",
+    "r2_key":  "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/33c49ba0-4590-4b4f-bd64-ebf49cea9647/gallery-veranda-walk.jpg",
+    "original_filename":  "gallery-veranda-walk.jpg",
+    "size":  176040,
+    "content_type":  "image/jpeg",
+    "created_at":  "2026-11-02T10:41:42Z"
 }

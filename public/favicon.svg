@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#f3f6f0"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#c5a051" stroke-width="1.2" opacity="0.5"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="400">
+    <tspan fill="#3f5f4f">S</tspan><tspan fill="#c5a051" font-size="14">&amp;</tspan><tspan fill="#3f5f4f">P</tspan>
+  </text>
+</svg>

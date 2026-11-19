@@ -1,11 +1,11 @@
 {
-  "version": 1,
-  "asset_id": "cd0918a1-e34f-402b-bd70-431172d69feb",
-  "project_id": "ba64381c-a43f-4599-8bde-daa2e588db8c",
-  "url": "/__l5e/assets-v1/cd0918a1-e34f-402b-bd70-431172d69feb/gallery-couple-garden.jpg",
-  "r2_key": "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/cd0918a1-e34f-402b-bd70-431172d69feb/gallery-couple-garden.jpg",
-  "original_filename": "gallery-couple-garden.jpg",
-  "size": 1141369,
-  "content_type": "image/jpeg",
-  "created_at": "2026-10-09T10:55:36Z"
+    "version":  1,
+    "asset_id":  "cd0918a1-e34f-402b-bd70-431172d69feb",
+    "project_id":  "ba64381c-a43f-4599-8bde-daa2e588db8c",
+    "url":  "/gallery-couple-garden.jpg",
+    "r2_key":  "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/cd0918a1-e34f-402b-bd70-431172d69feb/gallery-couple-garden.jpg",
+    "original_filename":  "gallery-couple-garden.jpg",
+    "size":  1141369,
+    "content_type":  "image/jpeg",
+    "created_at":  "2026-10-09T10:55:36Z"
 }

@@ -1,11 +1,11 @@
 {
-  "version": 1,
-  "asset_id": "aa1e9f66-399d-4202-945e-aa7c1cfb4749",
-  "project_id": "ba64381c-a43f-4599-8bde-daa2e588db8c",
-  "url": "/__l5e/assets-v1/aa1e9f66-399d-4202-945e-aa7c1cfb4749/gallery-couple-bench.jpg",
-  "r2_key": "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/aa1e9f66-399d-4202-945e-aa7c1cfb4749/gallery-couple-bench.jpg",
-  "original_filename": "gallery-couple-bench.jpg",
-  "size": 101380,
-  "content_type": "image/jpeg",
-  "created_at": "2026-10-09T10:55:33Z"
+    "version":  1,
+    "asset_id":  "aa1e9f66-399d-4202-945e-aa7c1cfb4749",
+    "project_id":  "ba64381c-a43f-4599-8bde-daa2e588db8c",
+    "url":  "/gallery-couple-bench.jpg",
+    "r2_key":  "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/aa1e9f66-399d-4202-945e-aa7c1cfb4749/gallery-couple-bench.jpg",
+    "original_filename":  "gallery-couple-bench.jpg",
+    "size":  101380,
+    "content_type":  "image/jpeg",
+    "created_at":  "2026-10-09T10:55:33Z"
 }

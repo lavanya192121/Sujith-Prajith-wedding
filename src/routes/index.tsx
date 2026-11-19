@@ -5,6 +5,8 @@ import {
   MessageCircle,
   Navigation,
   Phone,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 import couplePhoto from "@/assets/couple-photo.jpg.asset.json";
@@ -40,8 +42,8 @@ export const Route = createFileRoute("/")({
   component: Invitation,
 });
 
-const WHATSAPP_NUMBER = "919400000000";
-const PHONE_NUMBER = "+919400000000";
+const WHATSAPP_NUMBER = "918606469853";
+const PHONE_NUMBER = "+918606469853";
 const VENUE_QUERY = "SNDP Building, Kaviyoor, Thiruvalla, Kerala, India";
 const MAPS_LINK = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(VENUE_QUERY)}`;
 
@@ -63,6 +65,7 @@ function Invitation() {
       />
 
       {invitationVisible && <ScrollProgress />}
+      {invitationVisible && <MusicPlayer />}
       {invitationVisible && (
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
           <span className="ambient-orb ambient-orb-gold" />
@@ -144,22 +147,95 @@ function ScrollProgress() {
   );
 }
 
+const AUDIO_SRC = "/s1.mpeg%20(1).mp3";
+
+function MusicPlayer() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (playing) return;
+    const start = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    };
+    window.addEventListener("pointerdown", start, { once: true });
+    window.addEventListener("keydown", start, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", start);
+      window.removeEventListener("keydown", start);
+    };
+  }, [playing]);
+
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      audio.pause();
+      setPlaying(false);
+    }
+  };
+
+  return (
+    <>
+      <audio ref={audioRef} src={AUDIO_SRC} loop preload="auto" />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={playing ? "Pause background music" : "Play background music"}
+        aria-pressed={playing}
+        className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-gold/60 bg-background/80 text-sage-deep shadow-lg backdrop-blur transition-colors hover:bg-gold/20 sm:bottom-8 sm:right-8 sm:h-14 sm:w-14"
+      >
+        {playing ? (
+          <Volume2 className="relative z-10 h-5 w-5 sm:h-6 sm:w-6" />
+        ) : (
+          <VolumeX className="relative z-10 h-5 w-5 sm:h-6 sm:w-6" />
+        )}
+        {playing && (
+          <span aria-hidden className="absolute inset-0 rounded-full border border-gold/50 animate-ping" />
+        )}
+      </button>
+    </>
+  );
+}
+
 function Cover({ opened, onVideoEnded, onFinished }: { opened: boolean; onVideoEnded: () => void; onFinished: () => void }) {
   const [dismissed, setDismissed] = useState(false);
+  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
     if (!opened) return;
-    const t = setTimeout(() => {
+    const exitTimer = setTimeout(() => setExiting(true), 1000);
+    const dismissTimer = setTimeout(() => {
       setDismissed(true);
       onFinished();
-    }, 1400);
-    return () => clearTimeout(t);
+    }, 2400);
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(dismissTimer);
+    };
   }, [opened, onFinished]);
 
   if (dismissed) return null;
 
   return (
-    <div className={`intro-cover fixed inset-0 z-40 overflow-hidden bg-background ${opened ? "animate-cover-exit" : ""}`} aria-label="Sujitha and Prajith's wedding invitation opening">
+    <div className={`intro-cover fixed inset-0 z-40 overflow-hidden bg-background ${exiting ? "animate-cover-exit" : ""}`} aria-label="Sujitha and Prajith's wedding invitation opening">
       <div className="intro-hands absolute inset-0" aria-hidden="true">
         <img src={divineHands} alt="" className="intro-hands-back absolute inset-0 h-full w-full object-cover" />
         <img src={divineHands} alt="" className="relative mx-auto h-full w-full object-contain" />
@@ -200,7 +276,7 @@ function Cover({ opened, onVideoEnded, onFinished }: { opened: boolean; onVideoE
           preload="auto"
           aria-label="Wedding invitation opening video"
           onEnded={onVideoEnded}
-          className="absolute inset-0 z-50 h-full w-full bg-background object-contain"
+          className="absolute inset-0 z-50 h-full w-full bg-black object-cover"
         />
       )}
     </div>
@@ -236,8 +312,8 @@ function Hero() {
         <p className="mt-4 text-[0.6rem] tracking-[0.5em] text-muted-foreground uppercase sm:mt-6 sm:text-xs">
           Save the date
         </p>
-        <LotusMark className="mx-auto mt-16 h-6 w-10 text-gold sm:mt-20" />
-        <p className="mt-16 font-display text-2xl tracking-[0.18em] text-foreground sm:mt-20 sm:text-3xl">
+        <LotusMark className="mx-auto mt-32 h-6 w-10 text-gold sm:mt-20" />
+        <p className="mt-6 font-display text-2xl tracking-[0.18em] text-foreground sm:mt-20 sm:text-3xl">
           12 · 12 · 2026
         </p>
         <p className="mt-3 text-xs tracking-[0.35em] text-muted-foreground uppercase">
@@ -318,9 +394,7 @@ function LocationSection() {
         </div>
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            The venue at SNDP Building, Kaviyoor, Thiruvalla is a two-hour drive
-            from Cochin International Airport and ten minutes from Thiruvalla
-            Railway Station.
+            The venue at SNDP Building, Kaviyoor, Thiruvalla, Kottayam, Kerala.
           </p>
           <a
             href={MAPS_LINK}
@@ -379,7 +453,7 @@ function ThankYou() {
 
       <div className="relative mx-auto max-w-3xl">
         <div className="glass-card rounded-[2rem] p-8 sm:p-12">
-          <div className="flex items-center gap-4 sm:gap-8 md:gap-10">
+          <div className="flex items-start gap-4 sm:items-center sm:gap-8 md:gap-10">
             {/* Stamp-style couple sketch — left, matching the desktop format on every screen */}
             <div className="relative shrink-0">
               <div className="relative rotate-[-2deg] rounded-2xl border-2 border-gold/60 bg-background/40 p-1.5 shadow-lg shadow-gold/10 sm:p-2">
@@ -414,7 +488,7 @@ function ThankYou() {
               <p className="font-display mt-4 whitespace-nowrap text-base font-light text-sage-deep sm:mt-6 sm:text-2xl">
                 Sujitha <span className="font-script text-gold">&amp;</span> Prajith
               </p>
-              <p className="mt-1.5 whitespace-nowrap text-[0.5rem] tracking-[0.18em] text-muted-foreground uppercase sm:mt-2 sm:text-[0.6rem] sm:tracking-[0.45em]">
+              <p className="mt-1.5 whitespace-normal text-center text-[0.5rem] tracking-[0.18em] text-muted-foreground uppercase sm:mt-2 sm:whitespace-nowrap sm:text-left sm:text-[0.6rem] sm:tracking-[0.45em]">
                 12 December 2026 · Thiruvalla
               </p>
             </div>

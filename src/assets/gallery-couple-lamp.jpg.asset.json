@@ -1,11 +1,11 @@
 {
-  "version": 1,
-  "asset_id": "cebf71b0-902a-4b46-8f10-593db9fca3c1",
-  "project_id": "ba64381c-a43f-4599-8bde-daa2e588db8c",
-  "url": "/__l5e/assets-v1/cebf71b0-902a-4b46-8f10-593db9fca3c1/gallery-couple-lamp.jpg",
-  "r2_key": "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/cebf71b0-902a-4b46-8f10-593db9fca3c1/gallery-couple-lamp.jpg",
-  "original_filename": "gallery-couple-lamp.jpg",
-  "size": 96510,
-  "content_type": "image/jpeg",
-  "created_at": "2026-10-09T10:55:29Z"
+    "version":  1,
+    "asset_id":  "cebf71b0-902a-4b46-8f10-593db9fca3c1",
+    "project_id":  "ba64381c-a43f-4599-8bde-daa2e588db8c",
+    "url":  "/gallery-couple-lamp.jpg",
+    "r2_key":  "a/v1/ba64381c-a43f-4599-8bde-daa2e588db8c/cebf71b0-902a-4b46-8f10-593db9fca3c1/gallery-couple-lamp.jpg",
+    "original_filename":  "gallery-couple-lamp.jpg",
+    "size":  96510,
+    "content_type":  "image/jpeg",
+    "created_at":  "2026-10-09T10:55:29Z"
 }
