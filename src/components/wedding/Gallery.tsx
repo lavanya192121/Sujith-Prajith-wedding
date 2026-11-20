@@ -11,19 +11,20 @@ import plantBench from "@/assets/gallery-plant-bench.jpg.asset.json";
 import benchSmile from "@/assets/gallery-bench-smile.jpg.asset.json";
 import shoulderEmbrace from "@/assets/gallery-shoulder-embrace.jpg.asset.json";
 import walkBw from "@/assets/gallery-walk-bw.jpg.asset.json";
+import { withBase } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const photos = [
-  { src: coupleGarden.url, alt: "Sujitha and Prajith smiling together among lush greenery", caption: "Two hearts, one path" },
-  { src: coupleBench.url, alt: "Sujitha and Prajith seated together on a sunlit veranda", caption: "Quiet moments of joy" },
-  { src: coupleLamp.url, alt: "Sujitha and Prajith holding hands beside the nilavilakku lamp", caption: "Held in love's embrace" },
-  { src: laughLean.url, alt: "Sujitha and Prajith laughing together, arms around each other", caption: "Laughter we share" },
-  { src: verandaWalk.url, alt: "Sujitha and Prajith walking hand in hand along a teal veranda", caption: "Walking hand in hand" },
-  { src: tiledRoof.url, alt: "Sujitha and Prajith strolling beneath a terracotta tiled roof", caption: "Steps toward forever" },
-  { src: plantBench.url, alt: "Sujitha and Prajith seated side by side on a tiled bench", caption: "Side by side" },
-  { src: benchSmile.url, alt: "Sujitha and Prajith gazing at each other and smiling", caption: "A moment to treasure" },
-  { src: shoulderEmbrace.url, alt: "Prajith embracing Sujitha as they sit close together", caption: "Wrapped in warmth" },
-  { src: walkBw.url, alt: "Sujitha and Prajith walking together in timeless black and white", caption: "Timeless together" },
+  { src: withBase(coupleGarden.url), alt: "Sujitha and Prajith smiling together among lush greenery", caption: "Two hearts, one path" },
+  { src: withBase(coupleBench.url), alt: "Sujitha and Prajith seated together on a sunlit veranda", caption: "Quiet moments of joy" },
+  { src: withBase(coupleLamp.url), alt: "Sujitha and Prajith holding hands beside the nilavilakku lamp", caption: "Held in love's embrace" },
+  { src: withBase(laughLean.url), alt: "Sujitha and Prajith laughing together, arms around each other", caption: "Laughter we share" },
+  { src: withBase(verandaWalk.url), alt: "Sujitha and Prajith walking hand in hand along a teal veranda", caption: "Walking hand in hand" },
+  { src: withBase(tiledRoof.url), alt: "Sujitha and Prajith strolling beneath a terracotta tiled roof", caption: "Steps toward forever" },
+  { src: withBase(plantBench.url), alt: "Sujitha and Prajith seated side by side on a tiled bench", caption: "Side by side" },
+  { src: withBase(benchSmile.url), alt: "Sujitha and Prajith gazing at each other and smiling", caption: "A moment to treasure" },
+  { src: withBase(shoulderEmbrace.url), alt: "Prajith embracing Sujitha as they sit close together", caption: "Wrapped in warmth" },
+  { src: withBase(walkBw.url), alt: "Sujitha and Prajith walking together in timeless black and white", caption: "Timeless together" },
 ];
 
 const positionClasses = {

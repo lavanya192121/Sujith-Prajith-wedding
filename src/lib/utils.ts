@@ -4,3 +4,7 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function withBase(url: string): string {
+  return `${import.meta.env.BASE_URL}${url.replace(/^\//, "")}`;
+}

@@ -15,6 +15,7 @@ import locationQr from "@/assets/location-qr.png.asset.json";
 import divineHands from "@/assets/cover-divine-hands.jpg";
 import introCouple from "@/assets/intro-couple.png";
 import weddingOpening from "@/assets/wedding-opening.mp4.asset.json";
+import { withBase } from "@/lib/utils";
 import { Countdown } from "@/components/wedding/Countdown";
 import { Gallery } from "@/components/wedding/Gallery";
 import { EventCarousel } from "@/components/wedding/EventCarousel";
@@ -147,7 +148,7 @@ function ScrollProgress() {
   );
 }
 
-const AUDIO_SRC = "/s1.mpeg%20(1).mp3";
+const AUDIO_SRC = withBase("/s1.mpeg%20(1).mp3");
 
 function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -269,7 +270,7 @@ function Cover({ opened, onVideoEnded, onFinished }: { opened: boolean; onVideoE
       </div>
       {!opened && (
         <video
-          src={weddingOpening.url}
+          src={withBase(weddingOpening.url)}
           autoPlay
           muted
           playsInline
@@ -294,7 +295,7 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-5 pt-24 pb-24">
       <img
-        src={couplePhoto.url}
+        src={withBase(couplePhoto.url)}
         alt="Sujitha and Prajith together, smiling in a garden"
         className="hero-photo pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80 sm:opacity-90"
       />
@@ -383,7 +384,7 @@ function LocationSection() {
         <div className="glass-card mt-12 rounded-3xl p-8 sm:p-10">
           <div className="mx-auto flex max-w-xs flex-col items-center">
             <img
-              src={locationQr.url}
+              src={withBase(locationQr.url)}
               alt="QR code linking to the wedding venue location in Thiruvalla, Kerala"
               className="h-56 w-56 rounded-2xl bg-white p-2 shadow-lg shadow-gold/10 sm:h-64 sm:w-64"
             />
@@ -462,7 +463,7 @@ function ThankYou() {
                 <CornerOrnament position="bl" />
                 <CornerOrnament position="br" />
                 <img
-                  src={coupleSketch.url}
+                  src={withBase(coupleSketch.url)}
                   alt="Sketch of Sujitha and Prajith"
                   width={220}
                   height={280}
