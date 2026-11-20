@@ -20,14 +20,18 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
 
+    // Prerendering is disabled: on Netlify it tries to import dist/server/server.js,
+    // which the Netlify Nitro preset doesn't emit, causing ERR_MODULE_NOT_FOUND.
+    // Pages are server-rendered on request by the Netlify function instead.
     prerender: {
-      enabled: true,
-      crawlLinks: true,
-      failOnError: true,
+      enabled: false,
     },
   },
 
   vite: {
-    base: "/Sujith-Prajith-wedding/",
+    // GitHub Pages serves the site from /Sujith-Prajith-wedding/, while Netlify serves it
+    // from the domain root. Netlify sets NETLIFY=true during builds (Nitro also uses it to
+    // pick its Netlify preset), so asset and route URLs match where the files are deployed.
+    base: process.env.NETLIFY ? "/" : "/Sujith-Prajith-wedding/",
   },
 });
